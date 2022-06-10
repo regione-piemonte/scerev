@@ -1,0 +1,60 @@
+<!--
+ Copyright Regione Piemonte - 2022
+ SPDX-License-Identifier: EUPL-1.2
+-->
+<div class="scerevBar">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 larghezza-max" id="mediaHeader"
+			style="padding-left: 5px; padding-right: 5px; height: 50px;">
+			<div class="row">
+				<div class="col" style="padding-top: 6px;">
+					<a nohref style="color: white; cursor: pointer;" class="pageleese">Domande di scelta-revoca</a>
+				</div>
+					<div class="col" style="bottom: 40px;" *ngIf="client.userInfo != undefined">
+					    <div ngbDropdown class="d-inline-block" style="float: right">
+					      <button class="btn btn-outline-primary" id="dropdownBasic1" style="float: right; padding-left: 0px; box-shadow: 0 0 0 0; color: white;" ngbDropdownToggle>
+					      <img class="img-fluid" src="assets/img/user/icona_profilo.png">
+					      {{client.userInfo.nome}} {{client.userInfo.cognome}}</button>
+					      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+					        <div class="row">
+								<div class="col" style="padding-left: 0px; padding-right: 0px;">
+								<a class="dropdown-item color-tendina-esci"
+								(click)="paginaPersonale()" style="cursor: pointer;">Profilo
+								personale</a>
+								</div>
+								<div class="col-auto"
+									style="padding-left: 0px; padding-right: 0px; right: 6px; top: 3px;">
+									<i class="fa fa-gear"></i>
+								</div>
+							</div>
+					        <div class="row">
+								<div class="col" style="padding-left: 0px; padding-right: 0px">
+									<a class="dropdown-item color-tendina-esci"
+										(click)="escilogout()" style="cursor: pointer;">Esci</a>
+								</div>
+								<div class="col-auto"
+									style="padding-left: 0px; padding-right: 0px; right: 6px; top: 3px;">
+									<i class="fa fa-external-link"></i>
+								</div>
+							</div>
+					      </div>
+					    </div>
+					</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>
+
+
+<div id="overlay" style="display:none;">
+    <!-- <div class="spinner"></div> -->
+	<div class="spinner-grow text-primary" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+	<br/>
+    Caricamento del sistema in corso...
+</div>
+
+<router-outlet></router-outlet>

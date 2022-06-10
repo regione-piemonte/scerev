@@ -1,0 +1,33 @@
+swagger: '2.0'
+info:
+  title: SCEREVBOWEB API
+  description: API per il backend di SCEREV.
+  version: 1.0.0
+schemes:
+  - http
+basePath: /restfacade/be
+produces:
+  - application/json
+paths:
+  /ping:
+    get:
+      operationId: ping
+      summary: servizio di ping del backend
+      description: Restituisce una stringa per confermare la disponibilita del backend
+      produces:
+        - application/json
+      tags:
+        - system
+      responses:
+        '200':
+          description: stringa di conferma funzionamento
+          schema:
+            type: string
+          headers:
+            someheader:
+              description: header di risposta di test
+              type: string  
+        default:
+          description: Unexpected error
+          schema:
+            type: string

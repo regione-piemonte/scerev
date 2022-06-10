@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!--PROTECTED REGION ID(R1699570612) ENABLED START -->
+	<tx:annotation-driven transaction-manager="txManager" />
+	<aop:aspectj-autoproxy />
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://xxx:xxx/DBSCEREV" />
+		<property name="username" value="xxx" />
+		<property name="password" value="xxx" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="persistenceUnitName" value="scerevjpa" />
+	</bean>
+	<bean id="regioneFacade" class="it.csi.scerev.scerevboweb.business.facade.impl.RegioneFacade">
+		<property name="dataDao" ref="dataDao" />
+	</bean>
+	<bean id="messaggioFacade" class="it.csi.scerev.scerevboweb.business.facade.impl.MessaggioFacade">
+		<property name="dataDao" ref="dataDao" />
+	</bean>
+	<bean id="auraFacade" class="it.csi.scerev.scerevserviziesterni.facade.impl.AuraFacade">
+		<property name="dataDao" ref="dataDao" />
+	</bean>
+
+	<!-- <bean id="audit" class="it.csi.scerev.scerevweb.business.dao.impl.AuditImpl"> 
+		<property name="dataDao" ref="dataDao" /> </bean> -->
+
+	<bean name="dataDao" class="it.csi.scerev.scerevjpa.business.dao.impl.DataDaoImpl" />
+	<!--PROTECTED REGION END -->
+
+</beans>

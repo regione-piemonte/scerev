@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DettagliPratica" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee377c77-13cf-4cf1-b34b-a2144b1b7cce">
+	<property name="ireport.zoom" value="1.9487171000000285"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="91"/>
+	<parameter name="COGNOME+NOME_MEDICO" class="java.lang.String"/>
+	<parameter name="COD_REGIONALE_MEDICO" class="java.lang.String"/>
+	<parameter name="DATA_SCELTA_MEDICO" class="java.lang.String"/>
+	<parameter name="COGNOME_ASSISTITO" class="java.lang.String"/>
+	<parameter name="COMUNE_DOMICILIO_ASSISTITO" class="java.lang.String"/>
+	<parameter name="COMUNE_RESIDENZA_ASSISTITO" class="java.lang.String"/>
+	<parameter name="CODICE_DISTRETTO_APPARTENENZA_ASSISTITO" class="java.lang.String"/>
+	<parameter name="CODICE_TESSERINO_ASSISTITO" class="java.lang.String"/>
+	<parameter name="NOME_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATA_NASCITA_ASSISTITO" class="java.lang.String"/>
+	<parameter name="CODICE_FISCALE_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATA_RILASCIO" class="java.lang.String"/>
+	<parameter name="DATA_SCADENZA" class="java.lang.String"/>
+	<variable name="data" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="orario" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("HH:mm").format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="555" height="802" uuid="f515caaf-515a-4d08-a955-5cf84798555b"/>
+				<imageExpression><![CDATA["report//TesserinoMedico.jpg"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="112" y="144" width="138" height="14" uuid="6c50fcaa-4b2b-4d27-a775-e3d9ce57b922"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COGNOME+NOME_MEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="112" y="168" width="80" height="15" uuid="47083dc5-f428-45ea-9879-48926625a9d8"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COD_REGIONALE_MEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="121" y="180" width="71" height="13" uuid="54e1e3a4-135b-46c2-abef-a7985bb1ce46"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_SCELTA_MEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="318" y="305" width="105" height="15" uuid="cd109b93-1c33-4953-8e99-30f73c637cb1">
+					<printWhenExpression><![CDATA[$P{CODICE_TESSERINO_ASSISTITO} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODICE_TESSERINO_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="316" y="176" width="127" height="15" uuid="e6da1c16-52f6-4acd-ba8a-d8a44d2dca59"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COGNOME_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="298" y="210" width="85" height="15" uuid="8c3f45e2-343f-42f9-9dab-98749dc7dbe0"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOME_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="291" y="327" width="135" height="15" uuid="c5f9cb65-fd3f-4f7e-819f-5d25a180a1a0"/>
+				<textElement textAlignment="Left">
+					<font size="10" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODICE_FISCALE_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="406" y="210" width="66" height="15" uuid="205e958f-d937-4509-9543-5c95fa881256"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_NASCITA_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="305" y="244" width="123" height="15" uuid="bf30ab6f-c71a-4713-8af3-4cc91e2a7ca9"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COMUNE_DOMICILIO_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="305" y="276" width="123" height="15" uuid="74969446-b676-4a24-a9ac-0fbbd9ff9459"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COMUNE_RESIDENZA_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="453" y="243" width="22" height="15" uuid="83072ef0-da42-4870-9645-7af878f52894"/>
+				<textElement textAlignment="Center">
+					<font size="10" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODICE_DISTRETTO_APPARTENENZA_ASSISTITO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="293" y="358" width="85" height="15" uuid="011a5ab0-144e-48c7-906f-49ea90ab00dc"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_RILASCIO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="391" y="358" width="85" height="15" uuid="a34bdeb4-3b8c-45cf-b1bc-49e92f697856">
+					<printWhenExpression><![CDATA[$P{DATA_SCADENZA} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_SCADENZA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

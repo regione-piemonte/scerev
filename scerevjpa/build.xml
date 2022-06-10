@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ##################################################### -->
+<!-- # build.xml file per compilazione e generazione     # -->
+<!-- # del pacchetto per il rilascio dell'applicazione.  # -->
+<!-- #                                                   # -->
+<!-- # Per una lista completa dei tasks eseguibili usare # -->
+<!-- # l'argomento di ant -projecthelp quando si         # -->
+<!-- # richiama questo build.xml.                        # -->
+<!-- ##################################################### -->
+
+<project basedir="."
+         default="default"
+         name="scerevjpa" 
+         xmlns:ivy="antlib:fr.jayasoft.ivy.ant">
+
+	<description>Build file per il progetto: [scerevjpa]</description>
+
+	<!-- -->
+	<echo message="Loading build properties..." />
+	<property file="buildfiles/build.properties" />
+	<property file="buildfiles/build.locale.properties" />
+	
+	<copy todir="${lib}">
+		<fileset dir="${lib_ext}" excludes="**/*.java*,**/*.jbx*" />
+	</copy>
+	
+	<path id="library.ref">
+		<fileset dir="${lib}">
+			<include name="**/*.jar" />
+			<include name="**/*.zip" />
+		</fileset>
+		<fileset dir="${lib_ext}">
+			<include name="**/*.jar" />
+			<include name="**/*.zip" />
+		</fileset>
+	</path>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # Target: init                                              # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="init" description="Inizializza lo script Ant.">
+		<tstamp />
+		<mkdir dir="${build}/classes" />
+		<mkdir dir="${build}/archives" />
+	</target>
+
+
+	<target name="resolve-dependencies"
+	        description="carica le librerie dal repository remoto">
+		<ivy:configure file="${basedir}/buildfiles/ivyconf.xml" />
+		<ivy:resolve file="${basedir}/buildfiles/ivy.xml" />
+	</target>
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # Target: default                                           # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="default"
+	        description="Eseguire il build per l'environment
+	                     specificato a linea di comando con
+	                     -Dtarget=${target} o per tutti gli
+	                     environment (se non specificato).">
+
+		<antcall target="clean-all" />
+		<antcall target="compile-all" />
+		<antcall target="package-jar" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # Target: compile-all                                       # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="compile-all" depends="init"
+	        description="Compila tutti i sorgenti.">
+
+		<echo message="===> Target: ${target}" />
+
+		<!-- compilazione dei sorgenti -->
+		<javac srcdir="${src}/java" destdir="${build}/classes"
+		       optimize="on" deprecation="on"
+		       compiler="modern"
+		       debug="on" debuglevel="lines,vars,source">
+		       <classpath refid="library.ref" />
+		</javac>
+
+		<!-- copia dei sorgenti -->
+		<copy todir="${build}/classes">
+			<fileset dir="${src}/java" excludes="**/*.java*,**/*.jbx*" />
+		</copy>
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [PKG]: package-jar                                # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="package-jar" description="Genera il jar per le classi comuni."
+		depends="load-dependencies,compile-all">
+		<jar destfile="${build}/archives/scerevjpa.jar"
+		     basedir="${build}/classes"
+		     includes="it/csi/scerev/scerevjpa/**, META-INF/persistence.xml">
+		</jar>
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-all                                        # -->
+	<!-- ############################################################# -->
+	<!-- nota: non cancella la directory "dist" appositamente: v. STDMDD-495.
+	per ripulire anche la "dist" richiamare esplicitamente il target "clean-dist" -->
+	<!-- -->
+	<target name="clean-all" description="Rimuove tutte le cartelle temporanee."
+	        depends="clean-archives, clean-cache, clean-classes, clean-javadoc, clean-jsp, clean-temp" />
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-cache                                      # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-cache"
+	        description="Rimuove la cartella di cache di Ivy e la lib.">
+		<delete dir="${build}/cache" failonerror="no" />
+		<delete dir="${lib}" failonerror="no" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-temp                                       # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-temp"
+	        description="Rimuove la cartella dei files temporanei di build.">
+		<delete dir="${temp}" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-archives                                  # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-archives"
+	        description="Rimuove la cartella degli archivi (war, ear, ...).">
+		<delete dir="${build}/archives" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-dist                                       # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-dist"
+	        description="Rimuove la cartella delle distribuzioni.">
+		<delete dir="${dist}" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-classes                                    # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-classes"
+	        description="Rimuove la cartella dei sorgenti compilati.">
+		<delete dir="${build}/classes" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-javadoc                                    # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-javadoc"
+	        description="Rimuove la cartella temporanea dei javadoc.">
+		<delete dir="${build}/javadoc" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [CLEAN]: clean-jsp                                        # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="clean-jsp"
+	        description="Rimuove la cartella temporanea delle jsp compilate.">
+	<delete dir="${build}/jsp" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # Target: about                                             # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="about" description="Visualizza l'elenco dei target pubblici dello script.">
+		<loadproperties srcfile="buildfiles/build.properties" />
+		<loadfile property="about" srcfile="buildfiles/about.txt" />
+		<echo message="${about}" />
+	</target>
+	
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # [IVY]: internal target: load-dependencies                 # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="load-dependencies"
+	        depends="resolve-dependencies"
+	        description="Risolve le dipendenze esterne.">
+		<ivy:retrieve pattern="${basedir}/lib/[artifact].[type]" />
+	</target>
+
+	<!-- -->
+	<!-- ############################################################# -->
+	<!-- # Target: about-custom                                      # -->
+	<!-- ############################################################# -->
+	<!-- -->
+	<target name="about-custom"
+	        description="Visualizza l'elenco di tutti i target,
+	                     pubblici e privati
+	                     (equivalente a 'ant -projecthelp')" >
+
+		<loadproperties srcfile="buildfiles/build.properties" />
+		<loadfile property="about-custom" srcfile="buildfiles/about-custom.txt" />
+		<echo message="${about-custom}" />
+		<java classname="org.apache.tools.ant.Main">
+			<arg value="-projecthelp" />
+		</java>
+	</target>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+</project>

@@ -1,0 +1,77 @@
+swagger: '2.0'
+info:
+  title: SCEREVBE API
+  description: API per il backend di SCEREV
+  version: 1.0.0
+schemes:
+  - http
+basePath: /restfacade/be
+produces:
+  - application/json
+paths:
+  /regioni:
+    get:
+      operationId: getRegioni
+      produces:
+        - application/json
+      tags: 
+        - business
+      parameters:
+        - in: query
+          name: fields
+          required: false
+          type: string
+      responses:
+        '200':
+          description: le regioni italiane
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Regione'
+responses:
+  BadRequest:
+    description: >-
+      La richiesta fatta dal client è errata. Ad esempio non sono stati passati
+      tutti i campi obbligatori, uno dei campi è di un tipo non valido,
+      formattazione dei filtri errata ecc.
+    schema:
+      $ref: '#/definitions/errore'
+  Forbidden:
+    description: >-
+      L'utente non ha i permessi necessari per visualizzare queste risorse. <br>
+      Ad esempio un utente che sta provando ad ottenere le ricette di un altro
+      utente senza averne la delega.
+    schema:
+      $ref: '#/definitions/errore'
+  NotFound:
+    description: >-
+      La risorsa cercata non è stata trovata. <br> Questo errore viene
+      restituito quando si prova ad accedere alla singola risorsa e questa non
+      esiste. <br> Nel caso in cui si prova ad ottenere una lista e non ci sono
+      elementi, restituire 200 con un array vuoto
+    schema:
+      $ref: '#/definitions/errore'
+  InternalServerError:
+    description: >-
+      Si è verificato un'errore interno del server. (es. null pointer exception,
+      connessione al DB saltata ecc)
+    schema:
+      $ref: '#/definitions/errore'
+definitions:
+  Regione:
+    type: object
+    properties:
+      codice:
+        type: integer
+        description: il codice identificativo della regione
+      nome:
+        type: string
+        description: il nome comune della regione
+  errore:
+    title: '[ERRORE] Generico'
+    type: object
+    properties:
+      codice:
+        type: string
+      descrizione:
+        type: string

@@ -1,0 +1,535 @@
+<!--
+ Copyright Regione Piemonte - 2022
+ SPDX-License-Identifier: EUPL-1.2
+-->
+<div class="row scerev" style="padding-top: 5px; padding-bottom: 5px;">
+	<div class="col-md-1"></div>
+	<div class="col">
+		<div id="alertSuccesso" class="alert alert-success" role="alert"
+			*ngIf="client.idFeedback == 200">
+			<h4 class="alert-heading">
+				<i class="fa fa-check" aria-hidden="true"></i> {{client.messaggioFeedback}}
+				<button style="outline: none;" type="button" class="close"
+					aria-label="Close" (click)="chiudiSuccess()	">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</h4>
+		</div>
+		
+		<div id="alertFail" class="alert alert-danger" role="alert"
+			*ngIf="client.idFeedback && client.idFeedback != 200">
+			<h4 class="alert-heading">
+				<i class="fa fa-check" aria-hidden="true"></i> {{client.messaggioFeedback}}
+				<button style="outline: none;" type="button" class="close"
+					aria-label="Close" (click)="chiudiDanger()	">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</h4>
+		</div>
+
+		<!-- Tab richieste -->
+		<ul ngbNav #nav="ngbNav" [activeId]="active" class="nav-tabs" (navChange)="changeTab($event)">
+			<li [ngbNavItem]="tab" *ngFor="let tab of tabs">
+				<a ngbNavLink>{{tab}}</a>	
+		</ul>
+
+		<div [ngbNavOutlet]="nav"></div>
+		<!-- 		<div class="row scerevTabs">
+			<ul class="nav nav-tabs" role="tablist" id="prodTabs">
+				<li class="nav-item text-center" role="presentation"
+					style="padding-right: 30px;"><a style="height: 100%"
+					class="nav-link active" aria-controls="certificati" role="tab"
+					data-toggle="tab" routerLink="richiesteaperte"
+					routerLinkActive="active">Richieste aperte </a></li>
+				<li class="nav-item text-center" role="presentation"
+					style="padding-right: 30px;"><a style="height: 100%"
+					class="nav-link" aria-controls="certificati" role="tab"
+					data-toggle="tab" routerLink="archiviorichieste"
+					routerLinkActive="active"> Archivio richieste </a></li>
+			</ul>
+		</div> -->
+	</div>
+	<div class="col-md-1"></div>
+</div>
+<div class="row scerev" style="padding-top: 5px; padding-bottom: 5px;">
+	<div class="col-md-1"></div>
+	<div class="col">
+		<div class="row scerevFilter" (keyup.enter)="ricercaAperte()">
+			<!-- Filtri di ricerca -->
+
+			<div class="row col-md-12">
+				<div class="col">
+					<div class="form-group">
+						<label style="white-space: nowrap;">Numero richiesta</label> <input id="richiesta"
+							class="form-control" [(ngModel)]="ricerca.numRichiesta"
+							style="text-transform: uppercase;" type="text">
+					</div>
+				</div>
+				<div class="col">
+					<label style="white-space: nowrap;">Stato</label>
+					<ng-container> <select name="statofiltro"
+						[(ngModel)]="ricerca.stato" id="statofiltro"
+						class="form-control form-control-sm statoCombo">
+						<option value="">Tutte</option>
+						<option *ngFor="let lista of listaListaStati"
+							value="{{lista.id}}">{{lista.descrizione}}</option>
+					</select> </ng-container>
+
+				</div>
+				<div class="col">
+					<label style="white-space: nowrap;">Tipologia</label>
+					<ng-container> <select name="listaTipologieMedico"
+						[(ngModel)]="ricerca.tipologia" id="listaTipologieMedico"
+						class="form-control form-control-sm statoCombo">
+						<option value="">Tutte</option>
+						<option
+							*ngFor="let tipologia of listaTipologieMedico"
+							value="{{tipologia.id}}">{{tipologia.descrizione}}</option>
+					</select> </ng-container>
+				</div>
+				<div class="col">
+					<label style="white-space: nowrap;">Data inserimento da</label>
+
+					<div class="input-group input-append date" id="startdateda"
+						name="startdateda" data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input id="dpDa" class="form-control" placeholder="gg/mm/aaaa" [(ngModel)]="datDa"
+										(ngModelChange)="focusDate(datDa)"
+										name="dp1" ngbDatepicker 
+										#d="ngbDatepicker">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											(click)="d.toggle()" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col">
+					<label style="white-space: nowrap;">Data inserimento a</label>
+
+					<div class="input-group input-append date" id="startdateda"
+						name="startdateda" data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input id="dpA" class="form-control" placeholder="gg/mm/aaaa" [(ngModel)]="datA"
+										(ngModelChange)="focusDate(datA)"
+										name="dp2" ngbDatepicker 
+										#c="ngbDatepicker">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											(click)="c.toggle()" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="row col-md-12">
+				<div class="col">
+					<label style="white-space: nowrap;">ASL</label>
+					<ng-container> 
+						<select name="aslfiltro"
+							[(ngModel)]="ricerca.asl" id="asl"
+							(change)="getDistretti()"
+							class="form-control form-control-sm statoCombo">
+							<option *ngIf="listaAslDistrettoAmbito && listaAslDistrettoAmbito.length > 1" [value] = ""></option>
+							<option [selected] = "listaAslDistrettoAmbito && listaAslDistrettoAmbito.length == 1" *ngFor="let asl of listaAslDistrettoAmbito"
+							[value]="asl.id">{{asl.descrizione}}</option>
+						</select>
+						<!-- <select *ngIf="listaAslDistrettoAmbito.length == 1"  name="aslfiltro"
+							[(ngModel)]="ricerca.asl" id="asl"
+							class="form-control form-control-sm statoCombo">
+							<option selected="selected" [value]="listaAslDistrettoAmbito[0].id">{{listaAslDistrettoAmbito[0].descrizione}}</option>
+						</select> -->
+					</ng-container>
+
+				</div>
+				<div class="col">
+					<ng-container> <label style="white-space: nowrap;">Distretto</label>
+						<select
+						[(ngModel)]="ricerca.distrettoDomicilio" id="distretto"
+						(change)="getAmbiti()"
+						class="form-control form-control-sm statoCombo">
+							<option [value] = ""></option>
+							<option *ngFor="let distretto of distretti"
+							[value]="distretto.descrizione">{{distretto.descrizione}}</option>
+						</select> 
+					</ng-container>
+					<!-- <div class="form-group">
+						<label style="white-space: nowrap;">Distretto</label> <input id="distretto"
+							class="form-control" [(ngModel)]="ricerca.distrettoDomicilio" [disabled]="ricerca.asl === null || ricerca.asl === undefined || ricerca.asl === ''"
+							style="text-transform: uppercase;" type="text">
+					</div> -->
+				</div>
+				<div class="col">
+					<ng-container> <label style="white-space: nowrap;">Ambito</label>
+						<select
+						[(ngModel)]="ricerca.ambitoDomicilio" id="ambito"
+						class="form-control form-control-sm statoCombo">
+							<option [value] = ""></option>
+							<option *ngFor="let ambito of ambiti" [value]="ambito.descrizione">{{ambito.descrizione}}</option>
+						</select> 
+					</ng-container>
+					<!-- <div class="form-group">
+						<label style="white-space: nowrap;">Ambito</label> <input id="ambito" class="form-control"
+							[disabled]="ricerca.distrettoDomicilio === null || ricerca.distrettoDomicilio === undefined || ricerca.distrettoDomicilio === ''"
+							[(ngModel)]="ricerca.ambitoDomicilio" style="text-transform: uppercase;"
+							type="text">
+					</div> -->
+				</div>
+				<div class="col mille" style="visibility: hidden">
+					<label style="white-space: nowrap;">TRASPARENTE</label>
+
+					<div class="input-group input-append date"
+						data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col milledue" style="visibility: hidden">
+					<label style="white-space: nowrap;">TRASPARENTE</label>
+
+					<div class="input-group input-append date"
+						data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="row col-md-12" style="padding: 20px;">
+				<div class="col-auto">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" class="custom-control-input" value="MMG" [(ngModel)]="ricerca.medPed"
+							id="defaultInline1" name="inlineDefaultRadiosExample" mdbInput>
+						<label class="custom-control-label" for="defaultInline1">Medici</label>
+					</div>
+				</div>
+				<div class="col-auto">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" class="custom-control-input" value="PLS" [(ngModel)]="ricerca.medPed"
+							id="defaultInline2" name="inlineDefaultRadiosExample" mdbInput>
+						<label class="custom-control-label" for="defaultInline2">Pediatri</label>
+					</div>
+				</div>
+				<div class="col-auto">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" class="custom-control-input" enabled value="" [(ngModel)]="ricerca.medPed"
+							id="defaultInline3" name="inlineDefaultRadiosExample" mdbInput>
+						<label class="custom-control-label" for="defaultInline3">Tutti</label>
+					</div>
+				</div>
+			</div>
+			<div class="row col-md-12">
+				<div class="col">
+					<div class="form-group">
+						<label style="white-space: nowrap;">Cognome assistito</label> <input class="form-control"
+							id="cognomeAssistito" [(ngModel)]="ricerca.cognomeAssistito"
+							style="text-transform: uppercase;" type="text">
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label style="white-space: nowrap;">Nome assistito</label> <input id="nomeAssistito"
+							class="form-control" [(ngModel)]="ricerca.nomeAssistito"
+							style="text-transform: uppercase;" type="text">
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label style="white-space: nowrap;">Codice fiscale assistito</label> <input id="CfAssistito"
+							class="form-control" [(ngModel)]="ricerca.codiceFiscale"
+							style="text-transform: uppercase;" type="text">
+					</div>
+				</div>
+				<div class="col">
+					<label style="white-space: nowrap;">Data di nascita assistito</label>
+
+					<div class="input-group input-append date" id="startdateda"
+						name="startdateda" data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input id="dpNascita" class="form-control" placeholder="gg/mm/aaaa" 
+										name="dp3" ngbDatepicker [(ngModel)]="datNasc"
+										(ngModelChange)="focusDate(datNasc)"
+										#b="ngbDatepicker">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											(click)="b.toggle()" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col millequattro" style="visibility: hidden">
+					<label style="white-space: nowrap;">TRASPARENTE</label>
+
+					<div class="input-group input-append date"
+						data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row col-md-12">
+				<div class="col">
+					<div class="form-group">
+						<label style="white-space: nowrap;">Cognome operatore</label> <input id="cognomeOperatore"
+							class="form-control" [(ngModel)]="ricerca.cognomeOperatore"
+							style="text-transform: uppercase;" type="text">
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label style="white-space: nowrap;">Nome operatore</label> <input id="nomeOperatore"
+							class="form-control" [(ngModel)]="ricerca.nomeOperatore"
+							style="text-transform: uppercase;" type="text">
+					</div>
+				</div>
+				<div class="col verticalCentered">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input"
+							id="customCheck1" [(ngModel)]="ricerca.inCarico"> <label class="custom-control-label"
+							for="customCheck1">In carico a me</label>
+					</div>
+				</div>
+				<div class="col mille" style="visibility: hidden">
+					<label style="white-space: nowrap;">TRASPARENTE</label>
+
+					<div class="input-group input-append date"
+						data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col milletre" style="visibility: hidden">
+					<label style="white-space: nowrap;">TRASPARENTE</label>
+
+					<div class="input-group input-append date"
+						data-provide="datepicker">
+						<form class="form-inline">
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary calendar"
+											type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row col-md-12 verticalCentered">
+				<div class="col"></div>
+				<div class="col-auto">
+					<button type="button" class="btn btn-secondary" [disabled]="listaRichieste?.length == 0"
+							(click)="exportRicerca()">Export ricerca</button>
+				</div>
+				<div class="col-auto">
+					<button type="button" class="btn btn-secondary"
+						(click)="pulisciFiltri()">Pulisci Filtri</button>
+				</div>
+				<div class="col-auto">
+					<button id="btnApplica" type="submit" class="btn btn-primary"
+						(click)="ricercaAperte()">Applica</button>
+					<button id="btnLoading" class="btn btn-primary" type="button"
+						disabled style="display: none;">
+						<span class="spinner-border spinner-border-sm" role="status"
+							aria-hidden="true"></span> Loading...
+					</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+<div class="row scerev" style="padding-top: 5px; padding-bottom: 5px;">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<!-- <table class="table table-sm table-striped table-hover">
+			<thead>
+				<tr>
+					<th scope="col">N.Richiesta</th>
+					<th scope="col">Assistito</th>
+					<th scope="col">ASL residenza</th>
+					<th scope="col">Medico/Pediatra</th>
+					<th scope="col">Distretto medico</th>
+					<th scope="col">Ambito medico</th>
+					<th scope="col">Stato pratica</th>
+					<th scope="col">Data richiesta</th>
+					<th scope="col">Operatore</th>
+					<th scope="col">Azioni</th>
+				</tr>
+			</thead> 
+			<tbody>
+				<tr (dblclick)="getDettaglio(i)"
+					*ngFor="let richiesta of client.listaRichieste; let i=index">
+					<td>{{richiesta.numPratica}}</td>
+					<td>{{richiesta.assistito}}</td>
+					<td>{{richiesta.asl}}</td>
+					<td>{{richiesta.medPed}}</td>
+					<td>lorem ipsum</td>
+					<td>lorem ipsum</td>
+					<td>{{richiesta.stato_pratica}}</td>
+					<td>{{richiesta.data_richiesta}}</td>
+					<td>{{richiesta.operatore}}</td>
+					
+					<td style="text-align: center;"><button
+							(click)="open(content)">
+							<i class="fa fa-bars"> </i>
+						</button></td>
+
+					<ng-template #content let-c="close" let-d="dismiss">
+								<div class="modal-header">
+									<h4 id="titolo" style="color: black; font-family: Roboto;"
+										class="modal-title">CRONOLOGIA</h4>
+									<button type="button" class="close" aria-label="Close"
+										(click)="d('Cross click')">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body"
+									style="overflow-x: auto; position: relative;">
+									<router-outlet></router-outlet>
+								</div>
+					</ng-template>
+
+				</tr>
+			</tbody>
+		</table> -->
+
+		<table id="miatab" datatable [dtOptions]="dtOptions"
+			class="table table-hover table-responsive-xl"
+			style="width: 100% !important;">
+			<thead>
+				<tr>
+					<th class="col-auto">Numero richiesta</th>
+					<th class="col-auto">Assistito</th>
+					<th class="col-auto">ASL di residenza</th>
+					<th class="col-auto">Medico</th>
+					<th class="col-auto">Distretto medico</th>
+					<th class="col-auto">Ambito medico</th>
+					<th class="col-auto">Stato</th>
+					<th class="col-auto">Data richiesta</th>
+					<th class="col-auto">Operatore</th>
+					<th class="col-auto"></th>
+				</tr>
+			</thead>
+			<tbody *ngIf="client.listaRichieste?.length != 0">
+				<tr (dblclick)="getDettaglio(i)" style="cursor: pointer"
+					*ngFor="let richiesta of listaRichieste; let i=index">
+					<td class="smarttable">{{richiesta.numPratica}}</td>
+					<td class="smarttable">{{richiesta.assistito}}<br>{{richiesta.cf_Assistito}}</td>
+					<td class="smarttable">{{richiesta.asl}}</td>
+					<td class="smarttable">{{richiesta.med_ped}}</td>
+					<td class="smarttable">{{richiesta.distretto}}</td>
+					<td class="smarttable">{{richiesta.ambito}}</td>
+					<td class="smarttable">{{richiesta.stato_pratica}}</td>
+					<td class="smarttable">{{richiesta.data_richiesta}}</td>
+					<td class="smarttable">{{richiesta.operatore}}</td>
+					<td class="smarttable" style="text-align: center; cursor: pointer;"><i
+						class="fa fa-bars" (click)="open(content)"></i></td>
+
+					<ng-template #content let-c="close" let-d="dismiss">
+					<div class="modal-header">
+						<h4 id="titolo" style="color: black; font-family: Roboto;"
+							class="modal-title">CRONOLOGIA</h4>
+						<button style="outline: none;" type="button" class="close"
+							aria-label="Close" (click)="d('Cross click')">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body"
+						style="overflow-x: auto; position: relative;">
+						<router-outlet></router-outlet>
+					</div>
+					</ng-template>
+
+				</tr>
+			</tbody>
+			<tbody *ngIf="listaRichieste?.length == 0">
+				<tr>
+					<td colspan="12" class="no-data-available">Nessuna pratica soddisfa i criteri di ricerca selezionati</td>
+				</tr>
+			<tbody>
+		</table>
+
+
+
+	</div>
+	<div class="col-md-1"></div>
+</div>

@@ -1,0 +1,71 @@
+<!--
+ Copyright Regione Piemonte - 2022
+ SPDX-License-Identifier: EUPL-1.2
+-->
+<div class="container">
+	<ngx-loading [show]="loading"
+		[config]="{ backdropBorderRadius: '14px',fullScreenBackdrop: true}"></ngx-loading>
+</div>
+
+
+<div id="home">
+	<div class="row cardDemo7 home" style="padding-top: 5px;">
+		<div class="col-md-1"></div>
+		<div class="col">			
+			<div id="alertFail" class="alert alert-danger" role="alert"
+				*ngIf="client.idFeedback && client.idFeedback != 200">
+				<h4 class="alert-heading">
+					<i class="fa fa-check" aria-hidden="true"></i>
+					{{client.messaggioFeedback}}
+					<button style="outline: none;" type="button" class="close"
+						aria-label="Close" (click)="chiudiDanger()	">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</h4>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+ 	<div class="row cardDemo7 home" hidden>
+		<div class="col-md-2"></div>
+		<div class="col-md-8 larghezza-max" style="padding: 50px">
+			<div class="row" style="margin-top: 20px">
+				<div class="col-md-4" style="margin: 0 auto;">
+					<div class="row">
+						<div class="col-md-4"></div>
+						<table class="home-table table-bordered">
+							<thead style="background-color: white;">
+								<tr>
+									<td>Domande di scelta-revoca</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<p id="home-descr">Lorem ipsum dolor sit amet, consectetur
+										adipiscing elit. Aenean euismod bibendum laoreet.</p>
+									<button type="button" id="buttonAccedi"
+										class="btn btn-primary home-button" (click)="toRicerca()">ACCEDI</button>
+									<button id="buttonAttendi" class="btn btn-primary" type="button"
+										disabled style="display: none;">
+										<span class="spinner-border spinner-border-sm" role="status"
+											aria-hidden="true"></span> Loading...
+									</button>
+									<!-- 	<button type="button" class="btn btn-primary home-button"
+										routerLink="/home" routerLinkActive="active">ACCEDI2</button> -->
+								 	<br>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+
+
+
+
+
+</div>
+<router-outlet></router-outlet>

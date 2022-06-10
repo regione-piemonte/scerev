@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DettagliPratica" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ee377c77-13cf-4cf1-b34b-a2144b1b7cce">
+	<property name="ireport.zoom" value="0.9090909090909105"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NOME+COGNOME_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="CODICE_FISCALE_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="CITTADINANZA_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="GIORNO_NASCITA_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="LUOGO_NASCITA_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="RESIDENZA_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="DOMICILIO_RICHIEDENTE" class="java.lang.String"/>
+	<parameter name="ASL_ISCRIZIONE" class="java.lang.String"/>
+	<parameter name="DATA_REVOCA_ASSISTENZA" class="java.lang.String"/>
+	<variable name="data" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="orario" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("HH:mm").format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<image>
+				<reportElement x="217" y="15" width="169" height="45" uuid="1637f313-acf0-4601-85ee-75e323b4c8fe"/>
+				<imageExpression><![CDATA["report//logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="179" y="88" width="237" height="32" uuid="b22ffeed-2503-4b98-bcb3-636302925407"/>
+				<textElement>
+					<font  size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REVOCA ASSISTENZA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="400" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="203" y="57" width="180" height="20" uuid="0b5f0a8b-9a50-4d22-8b03-9c48f002411e"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOME+COGNOME_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="203" y="93" width="180" height="20" uuid="941009ec-cc8e-42f0-9668-5e454e890295"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODICE_FISCALE_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="203" y="124" width="180" height="20" uuid="e0d8e108-2315-4a72-9139-63d61b9866ab"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CITTADINANZA_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="109" y="156" width="101" height="20" uuid="cbc87ba6-3bed-4736-895f-2d36ea16dd08"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{GIORNO_NASCITA_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="236" y="156" width="180" height="20" uuid="98517df8-ec10-413b-94ba-997487ff7d57"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LUOGO_NASCITA_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="203" y="187" width="180" height="20" uuid="039c75fb-56dd-417f-b311-99da8de292b8"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RESIDENZA_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="203" y="219" width="180" height="20" uuid="3e0e86c0-9b40-44e2-a225-b798ea109c4e"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DOMICILIO_RICHIEDENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="236" y="249" width="180" height="20" uuid="812317d3-3285-4539-a735-ffa31ae394a1"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ASL_ISCRIZIONE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="203" y="282" width="180" height="20" uuid="bbbfd61f-508e-4e12-a790-7e5e36fcb80c"/>
+				<textElement>
+					<font />
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_REVOCA_ASSISTENZA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="27" y="57" width="166" height="20" uuid="4f91a0dd-1b48-49cd-b7c5-19c3c2498b34"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[Il cittadino:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="93" width="166" height="20" uuid="e92c23d7-523c-4a40-9b9c-a6541170b9a9"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[codice fiscale:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="124" width="166" height="20" uuid="ef149887-466c-48f3-9b52-5c9e7cd865a5"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[di cittadinanza:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="156" width="82" height="20" uuid="fc99b1cd-faba-4764-a92d-964c92281eb2"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[nato il: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="187" width="166" height="20" uuid="b00d981b-2002-475b-9400-54d56f54bd71"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[residente a:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="156" width="7" height="20" uuid="b46aa745-1e55-41cd-b33a-b1af3d53d587"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="219" width="166" height="20" uuid="721aaa49-4059-4cf9-ac5b-f338ded455bd"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[domiciliato a:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="249" width="209" height="20" uuid="3f15818c-5fd6-4d10-b5e8-f233f1b8f119"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[ha effettuato la revoca dell'assistenza presso l'ASL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="282" width="166" height="20" uuid="096482a5-8637-4ccb-86cc-d2654e498dcf"/>
+				<textElement>
+					<font  isBold="false"/>
+				</textElement>
+				<text><![CDATA[in data:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,17 @@
+{
+"java8": false,
+"useBeanValidation": true,
+"hideGenerationTimestamp": true,
+"apiPackage": "it.csi.scerev.scerevbe.business.be",
+"modelPackage":  "it.csi.scerev.scerevbe.dto",
+"invokerPackage": "it.csi.scerev.scerevbe.business.be",
+"implFolder": "implfolder",
+"sourceFolder": "src/java",
+"useSwaggerFeature": false,
+"generateJbossDeploymentDescriptor": false,
+"generateImplArtifacts": false,
+"generateSwaggerMetadata": false,
+"attributeSerializationStrategy": "implicit-camel-case", 
+"accessHttpHeaders": true,
+"accessHttpRequest": true
+}

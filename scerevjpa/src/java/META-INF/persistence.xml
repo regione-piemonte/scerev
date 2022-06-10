@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="scerevjpa" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDAmbito</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDAsl</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDAzione</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDCittadinanza</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDDistretto</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDDocumentoTipo</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDGradoParentela</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDGruppoUtenti</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDMotivazione</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDMotivoDomicilio</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDMotivoSoggiorno</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDMsg</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDNazione</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDPraticaStato</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDPraticaTipo</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDRegione</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDTipologiaMedico</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevDTipologiaProfilo</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevLAudit</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevRAzioniGruppoUtenti</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevRMotivoSoggiornoDocumentoTipo</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevRPraticaPraticaTipo</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTCronologia</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTDocumento</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTFile</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTInfoSupplementari</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTLocalita</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTMonitoraggio</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTPratica</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevTAslOperatore</class>
+		<class>it.csi.scerev.scerevjpa.business.entity.ScerevLogAura</class>
+		<properties>
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="eclipselink.logging.parameters" value="true"/>
+			<property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=ERROR"/>
+			<property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true" />
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+			<property name="hibernate.default_schema" value="scerev" />
+			<property name="jboss.as.jpa.managed" value="false" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+			<!-- <property name="hibernate.ejb.interceptor" value="it.csi.scerev.scerevboweb.filter.CifraturaInterceptor" /> -->
+			<property name="hibernate.id.new_generator_mappings" value="false" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>

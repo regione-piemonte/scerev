@@ -1,0 +1,6 @@
+name@version *,license *,copyrights *,end-of-support,dependencies,language,repository,email,URL
+commons-io-2.5.jar,Apache 2.0,-,-,-,Java,-,-,-,
+jackson-mapper-asl-1.9.13.jar,Apache 2.0,-,-,-,Java,-,-,-,
+spring-core-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
+spring-expression-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
+spring-tx-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,

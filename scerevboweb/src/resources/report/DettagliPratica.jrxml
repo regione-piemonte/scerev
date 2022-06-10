@@ -1,0 +1,1122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final utlizzo versione della libreria JasperReports6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DettagliPratica" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="5" isSummaryNewPage="true" whenResourceMissingType="Empty" uuid="ee377c77-13cf-4cf1-b34b-a2144b1b7cce">
+	<property name="ireport.zoom" value="1.9487171000000214"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1232"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="ALLEGATI_DATASET" uuid="788c1bf1-ed72-4c50-abdc-c94f21f77915">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="nome" class="java.lang.String"/>
+		<field name="tipo" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="INTESTAZIONE_NUM_PRATICA" class="java.lang.String"/>
+	<parameter name="INTESTAZIONE_STATO_PRATICA" class="java.lang.String"/>
+	<parameter name="INTESTAZIONE_RICHIESTA_IN_CARICO_A" class="java.lang.String"/>
+	<parameter name="INTESTAZIONE_NOME_DELEGATO" class="java.lang.String"/>
+	<parameter name="INTESTAZIONE_COGNOME_DELEGATO" class="java.lang.String"/>
+	<parameter name="INTESTAZIONE_CODICE_FISCALE_DELEGATO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_NOME_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_COGNOME_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_TIPOLOGIA_RICHIESTA" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_CODICE_FISCALE_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_LUOGO_NASCITA_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_DATA_NASCITA_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_ETA_ASSISTITO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_CITTADINANZA" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_RESIDENZA_DICHIARATA" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_DOMICILIO_DICHIARATO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_ASL_DOMICILIO_DICHIARATO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_ASL_RESIDENZA_DICHIARATA" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_DISTRETTO_DOMICILIO_DICHIARATO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_AMBITO_DOMICILIO_DICHIARATO" class="java.lang.String"/>
+	<parameter name="AURA_NOME_MEDICO" class="java.lang.String"/>
+	<parameter name="AURA_COGNOME_MEDICO" class="java.lang.String"/>
+	<parameter name="AURA_RESIDENZA_AURA" class="java.lang.String"/>
+	<parameter name="AURA_DOMICILIO_AURA" class="java.lang.String"/>
+	<parameter name="AURA_ASL_DOMICILIO" class="java.lang.String"/>
+	<parameter name="AURA_ASL_ISCRIZIONE" class="java.lang.String"/>
+	<parameter name="AURA_TIPOLOGIA_PROFILO_SANITARIO" class="java.lang.String"/>
+	<parameter name="AURA_DATA_ISCRIZIONE_ASL" class="java.lang.String"/>
+	<parameter name="AURA_DATA_FINE_ISCRIZIONE_ASL" class="java.lang.String"/>
+	<parameter name="MEDEXTRAREG_NOME_MEDICO_PRECEDENTE" class="java.lang.String"/>
+	<parameter name="MEDEXTRAREG_COGNOME_MEDICO_PRECEDENTE" class="java.lang.String"/>
+	<parameter name="MEDEXTRAREG_REGIONE" class="java.lang.String"/>
+	<parameter name="MEDEXTRAREG_AZIENDA_SANITARIA" class="java.lang.String"/>
+	<parameter name="GENERICO_MOTIVAZIONE_SOGGIORNO_ITALIA" class="java.lang.String"/>
+	<parameter name="GENERICO_MOTIVAZIONE_DOMICILIO" class="java.lang.String"/>
+	<parameter name="LAVORO_TIPO_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROAUTON_PROFESSIONE" class="java.lang.String"/>
+	<parameter name="LAVOROAUTON_PARTITA_IVA" class="java.lang.String"/>
+	<parameter name="LAVOROAUTON_NUMERO_DI_ISCRIZIONE" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_DITTA_O_DATORE_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_NR_TELEFONO_DATORE_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_COMUNE_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_PROVINCIA_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_INDIRIZZO_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_CIVICO_LAVORO" class="java.lang.String"/>
+	<parameter name="LAVOROSUB_DATA_FINE_CONTRATTO_LAVORO" class="java.lang.String"/>
+	<parameter name="STUDIO_NOME_ISTITUTO" class="java.lang.String"/>
+	<parameter name="STUDIO_COMUNE_ISTITUTO" class="java.lang.String"/>
+	<parameter name="STUDIO_PROVINCIA_ISTITUTO" class="java.lang.String"/>
+	<parameter name="STUDIO_INDIRIZZO_ISTITUTO" class="java.lang.String"/>
+	<parameter name="STUDIO_CIVICO_ISTITUTO" class="java.lang.String"/>
+	<parameter name="STUDIO_DATA_FINE_ISCRIZIONE" class="java.lang.String"/>
+	<parameter name="RICONG_NOME_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_COGNOME_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_CODICE_FISCALE_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_GRADI_PARENTELA" class="java.lang.String"/>
+	<parameter name="RICONG_COGNOME_E_NOME_MEDICO_FAMILIARE" class="java.lang.String"/>
+	<parameter name="ALLEGATI" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="MEDICORICHIESTO_NOME" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_COGNOME" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_TIPOLOGIA" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_ASL" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_DISTRETTO" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_AMBITO" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_RICHIESTO_MEDICO_FINO_AL" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_FLAG_AUTOLIMITATO" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_MASSIMALE" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_MASSIMALE_IN_DEROGA" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_MASSIMALE_TEMPORANEI" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_MASSIMALE_PER_FASCIA_ETA" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_ASSISTITI_NETTI" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_ASSISTITI_LORDI" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_DISPONIBILITA_PIENA" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_DISPONIBILITA_RICONG" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_DISPONIBILITA_TEMP" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_TIPOLOGIA_PROFILO" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DURATA_ASSISTENZA_DA" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DURATA_ASSISTENZA_A" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_MEDICO_GENERICO" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DEROGA_PEDIATRA" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DEROGA_TERRITORIALE" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DEROGA_ASSOCIAZIONE" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DEROGA_MASSIMALE" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_DEROGA_MASSIMALE_TEMP" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_RICONG_FAMILIARE" class="java.lang.String"/>
+	<parameter name="ACCETRICHIESTA_MEDICO_REVOCATO" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_ASS_SANITARIA_FINO_AL" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_DISPONIBILITA_0-6" class="java.lang.String"/>
+	<parameter name="MEDICORICHIESTO_ASSISTITI_NETTI_0-6" class="java.lang.String"/>
+	<parameter name="DATI_ASSISTITO_TELEFONO" class="java.lang.String"/>
+	<parameter name="ALLEGATI_TIPO" class="java.lang.String"/>
+	<parameter name="ALLEGATI_NOME" class="java.lang.String"/>
+	<parameter name="RICONG_DATA_NASCITA_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_TIPO_PROFILO_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_FINE_ASL_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_RES_AURA_FAMILIARE" class="java.lang.String"/>
+	<parameter name="RICONG_DOM_AURA_FAMILIARE" class="java.lang.String"/>
+	<parameter name="DEROGA_RICONG_FAM" class="java.lang.Boolean"/>
+	<parameter name="MOTIVAZIONE_DOMANDA" class="java.lang.String"/>
+	<variable name="data" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="orario" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("HH:mm").format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="10" y="10" width="290" height="36" uuid="b22ffeed-2503-4b98-bcb3-636302925407"/>
+				<textElement verticalAlignment="Top">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domanda di scelta revoca]]></text>
+			</staticText>
+			<image scaleImage="RealSize" onErrorType="Blank">
+				<reportElement x="424" y="18" width="121" height="37" uuid="e76ce60b-1ce3-4125-a014-2787c7313341"/>
+				<imageExpression><![CDATA["report//Header.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="133" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="10" y="55" width="535" height="15" uuid="6ad10d9a-bce5-4d80-8da6-02354edfb678"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA["Tipologia richiesta: " + $P{DATI_ASSISTITO_TIPOLOGIA_RICHIESTA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="10" y="10" width="535" height="15" uuid="0b5f0a8b-9a50-4d22-8b03-9c48f002411e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Numero Pratica: " + $P{INTESTAZIONE_NUM_PRATICA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="10" y="25" width="535" height="15" uuid="63ffe9ff-3913-488e-b2ba-f78a4ef7e9ab"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Stato Pratica: " + $P{INTESTAZIONE_STATO_PRATICA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="10" y="40" width="535" height="15" isRemoveLineWhenBlank="true" uuid="4330f377-be1d-4ff2-b985-45fdc8824397">
+					<printWhenExpression><![CDATA[$P{INTESTAZIONE_RICHIESTA_IN_CARICO_A} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Richiesta in carico a: " + $P{INTESTAZIONE_RICHIESTA_IN_CARICO_A}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" x="10" y="90" width="537" height="39" uuid="97509b4b-167b-4f8b-a622-9942abb1c1c3">
+					<property name="ShowOutOfBoundContent" value="false"/>
+				</reportElement>
+				<box bottomPadding="20">
+					<pen lineWidth="3.5" lineColor="#0473B8"/>
+				</box>
+				<staticText>
+					<reportElement positionType="Float" x="20" y="20" width="135" height="20" uuid="f7b446eb-0270-4c88-8881-1d6c6dbfc894"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATI RICHIEDENTE]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="55" width="250" height="15" uuid="f92192d6-436e-4694-8f49-13219c576708"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Nome: " + $P{DATI_ASSISTITO_NOME_ASSISTITO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="55" width="225" height="15" uuid="6de80be0-8494-47ee-b0f6-821599565aa3"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Cognome: " + $P{DATI_ASSISTITO_COGNOME_ASSISTITO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="70" width="250" height="15" uuid="cd933836-dbec-4bfc-b59a-9c3fded67d61"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Codice Fiscale: " + $P{DATI_ASSISTITO_CODICE_FISCALE_ASSISTITO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="85" width="250" height="15" uuid="e3ad5374-8652-40f2-9d49-c17029b8713d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Luogo di nascita: " + $P{DATI_ASSISTITO_LUOGO_NASCITA_ASSISTITO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="70" width="225" height="15" uuid="3baf48cd-4bde-4e9b-8043-2b1463e2be53"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Data nascita: " + $P{DATI_ASSISTITO_DATA_NASCITA_ASSISTITO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="85" width="225" height="15" uuid="62a3384e-ea32-43e6-b5bd-8f76e94b62f4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Età: " + $P{DATI_ASSISTITO_ETA_ASSISTITO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="120" width="250" height="15" uuid="282ef3dc-0e4d-402f-ace2-3e5661fb7747"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Cittadinanza: " + ($P{DATI_ASSISTITO_CITTADINANZA} == null ? "" : $P{DATI_ASSISTITO_CITTADINANZA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="120" width="225" height="45" uuid="5bc2513e-e8b7-47be-864d-8416d4a6e0d0"/>
+					<textElement verticalAlignment="Top">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Residenza dichiarata: " + ($P{DATI_ASSISTITO_RESIDENZA_DICHIARATA} == null ? "" : $P{DATI_ASSISTITO_RESIDENZA_DICHIARATA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="135" width="250" height="30" uuid="56abef93-0251-440d-aeee-7317a99250b7"/>
+					<textElement verticalAlignment="Top">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Domicilio dichiarato: " + ($P{DATI_ASSISTITO_DOMICILIO_DICHIARATO} == null ? "" : $P{DATI_ASSISTITO_DOMICILIO_DICHIARATO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="165" width="250" height="15" uuid="a7188f34-fbc6-4434-8741-54060df1575c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ASL Residenza dichiarata: " + ($P{DATI_ASSISTITO_ASL_RESIDENZA_DICHIARATA} == null ? "" : $P{DATI_ASSISTITO_ASL_RESIDENZA_DICHIARATA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="180" width="250" height="15" uuid="ce7e4fcf-7e0e-4174-af42-e4b6e7114eea"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ASL Domicilio dichiarato: " + ($P{DATI_ASSISTITO_ASL_DOMICILIO_DICHIARATO} == null ? "" : $P{DATI_ASSISTITO_ASL_DOMICILIO_DICHIARATO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="165" width="225" height="30" uuid="1e585279-b97d-4e5a-9381-f5dcd3bb7f9c"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Distretto domicilio dichiarato: \n" + ($P{DATI_ASSISTITO_DISTRETTO_DOMICILIO_DICHIARATO} == null ? "" : $P{DATI_ASSISTITO_DISTRETTO_DOMICILIO_DICHIARATO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="290" y="195" width="225" height="30" uuid="05e2f045-22b6-4cb3-998e-3af0f523b67d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Ambito domicilio dichiarato: \n" + ($P{DATI_ASSISTITO_AMBITO_DOMICILIO_DICHIARATO} == null ? "" : $P{DATI_ASSISTITO_AMBITO_DOMICILIO_DICHIARATO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="210" width="250" height="15" uuid="bb454334-8de5-4844-94a3-3a5e6ef04399"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Telefono: " + ($P{DATI_ASSISTITO_TELEFONO} == null ? "" : $P{DATI_ASSISTITO_TELEFONO})]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="20" y="244" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="8c30bcda-fa6c-42f9-a726-e9c07f24aac0"/>
+					<graphicElement>
+						<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+					</graphicElement>
+				</rectangle>
+				<frame>
+					<reportElement x="20" y="246" width="495" height="106" isRemoveLineWhenBlank="true" uuid="9e81ed82-1ed2-4083-a257-ed777b81ad7e">
+						<printWhenExpression><![CDATA[$P{INTESTAZIONE_CODICE_FISCALE_DELEGATO} != null]]></printWhenExpression>
+					</reportElement>
+					<staticText>
+						<reportElement positionType="Float" x="0" y="20" width="135" height="20" uuid="649a1be8-c29f-4b43-a000-b485d99449d5"/>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[DATI DELEGATO]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="55" width="250" height="15" uuid="0ab59703-523f-49af-a084-56925db837b1"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Nome: " + ($P{INTESTAZIONE_NOME_DELEGATO} == null ? "" : $P{INTESTAZIONE_NOME_DELEGATO})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="270" y="55" width="225" height="15" uuid="5a7e6b1e-0d63-480b-a34b-560f0927cf9b"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Cognome: " + ($P{INTESTAZIONE_COGNOME_DELEGATO} == null ? "" : $P{INTESTAZIONE_COGNOME_DELEGATO})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="70" width="250" height="15" uuid="b462f5d7-d310-4a88-9d19-5a17a9b50e50"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Codice Fiscale: " + ($P{INTESTAZIONE_CODICE_FISCALE_DELEGATO} == null ? "" : $P{INTESTAZIONE_CODICE_FISCALE_DELEGATO})]]></textFieldExpression>
+					</textField>
+					<rectangle>
+						<reportElement mode="Opaque" x="0" y="104" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="399904e5-2b78-4c5f-b8c5-b24c04edbbcf"/>
+						<graphicElement>
+							<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+						</graphicElement>
+					</rectangle>
+				</frame>
+				<staticText>
+					<reportElement positionType="Float" x="20" y="370" width="250" height="20" uuid="262c29af-ff1d-405b-94b5-e36e3ea75788"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATI PRESENTI IN AURA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="405" width="250" height="15" uuid="c961c253-ac85-4870-94f0-4cadcc319238"/>
+					<textElement markup="styled">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Nome medico: " + ($P{AURA_NOME_MEDICO} == null ? "" : $P{AURA_NOME_MEDICO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="405" width="225" height="15" uuid="237bd841-7a0c-4805-baea-05e4d64d7354"/>
+					<textElement verticalAlignment="Middle" markup="styled">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Cognome medico: " + ($P{AURA_COGNOME_MEDICO} == null ? "" : $P{AURA_COGNOME_MEDICO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="420" width="250" height="30" uuid="e376a159-adec-4d7a-aa46-047e951d93a7"/>
+					<textElement verticalAlignment="Top">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Residenza in AURA: " + ($P{AURA_RESIDENZA_AURA} == null ? "" : $P{AURA_RESIDENZA_AURA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="420" width="225" height="30" uuid="17adc715-dbba-4d42-bc1e-c389c19dccc6"/>
+					<textElement verticalAlignment="Top">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Domicilio in AURA: " + ($P{AURA_DOMICILIO_AURA} == null ? "" : $P{AURA_DOMICILIO_AURA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="450" width="250" height="15" uuid="9ad1a76c-c835-4cab-a701-b99b980c4005"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ASL iscrizione in AURA: " + ($P{AURA_ASL_ISCRIZIONE} == null ? "" : $P{AURA_ASL_ISCRIZIONE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="450" width="225" height="15" uuid="a79a738e-1532-4194-ae30-e6efebbef8f4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ASL domicilio in AURA: " + ($P{AURA_ASL_DOMICILIO} == null ? "" : $P{AURA_ASL_DOMICILIO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="465" width="250" height="15" uuid="960443d4-724d-4b27-983b-21232f7f85bd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Tipologia profilio sanitario: " + ($P{AURA_TIPOLOGIA_PROFILO_SANITARIO} == null ? "" : $P{AURA_TIPOLOGIA_PROFILO_SANITARIO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="495" width="250" height="15" uuid="30722b09-38fb-4f44-83f1-e960461758e3"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Data iscrizione ASL: " + ($P{AURA_DATA_ISCRIZIONE_ASL} == null ? "" : $P{AURA_DATA_ISCRIZIONE_ASL})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="495" width="225" height="15" uuid="e986214a-6b4f-4710-9ab0-452d3a815719"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Data fine iscrizione ASL: " + ($P{AURA_DATA_FINE_ISCRIZIONE_ASL} == null ? "" : $P{AURA_DATA_FINE_ISCRIZIONE_ASL})]]></textFieldExpression>
+				</textField>
+			</frame>
+			<break>
+				<reportElement x="0" y="131" width="99" height="1" uuid="d29aab11-8956-4e0a-967d-073b2c8d93d8"/>
+			</break>
+		</band>
+		<band height="53" splitType="Stretch">
+			<frame>
+				<reportElement positionType="Float" x="10" y="6" width="536" height="40" uuid="e0e68cb9-ba3e-459a-8654-68362077aa6b">
+					<property name="ShowOutOfBoundContent" value="true"/>
+				</reportElement>
+				<box bottomPadding="20">
+					<pen lineWidth="3.5" lineColor="#0473B8"/>
+				</box>
+				<frame>
+					<reportElement positionType="Float" x="20" y="20" width="495" height="19" isRemoveLineWhenBlank="true" uuid="f7fb08e7-51a8-4362-8555-8c29caba90c4">
+						<property name="ShowOutOfBoundContent" value="false"/>
+						<printWhenExpression><![CDATA[$P{MEDEXTRAREG_NOME_MEDICO_PRECEDENTE} != null && $P{MEDEXTRAREG_COGNOME_MEDICO_PRECEDENTE} != null && $P{MEDEXTRAREG_REGIONE} != null && $P{MEDEXTRAREG_AZIENDA_SANITARIA} != null]]></printWhenExpression>
+					</reportElement>
+					<staticText>
+						<reportElement x="0" y="0" width="494" height="20" uuid="013d081c-2d5a-4256-9cc1-c68311257d30"/>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[DATI MEDICO EXTRA-REGIONE]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="40" width="250" height="15" isRemoveLineWhenBlank="true" uuid="83cefe33-68a9-4799-8c67-db5dbf2a60de"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Nome: " + ($P{MEDEXTRAREG_NOME_MEDICO_PRECEDENTE} == null ? "" : $P{MEDEXTRAREG_NOME_MEDICO_PRECEDENTE})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="270" y="40" width="225" height="15" isRemoveLineWhenBlank="true" uuid="7c4f2f70-05c6-405e-bfff-987468ab6b32"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Cognome: " + ($P{MEDEXTRAREG_COGNOME_MEDICO_PRECEDENTE} == null ? "" : $P{MEDEXTRAREG_COGNOME_MEDICO_PRECEDENTE})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="55" width="250" height="15" isRemoveLineWhenBlank="true" uuid="767d2de5-5c97-4802-a7c8-3a6e5d639641"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Regione: " + ($P{MEDEXTRAREG_REGIONE} == null ? "" : $P{MEDEXTRAREG_REGIONE})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="270" y="55" width="225" height="15" isRemoveLineWhenBlank="true" uuid="a0015219-a3d9-406c-9390-6df7bc97a8f1"/>
+						<textElement verticalAlignment="Middle">
+							<font size="10" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Azienda Sanitaria: " + ($P{MEDEXTRAREG_AZIENDA_SANITARIA} == null ? "" : $P{MEDEXTRAREG_AZIENDA_SANITARIA})]]></textFieldExpression>
+					</textField>
+					<rectangle>
+						<reportElement mode="Opaque" x="0" y="89" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="a3344bcf-ebec-4890-8079-4988f1926c7e"/>
+						<graphicElement>
+							<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+						</graphicElement>
+					</rectangle>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="20" y="39" width="495" height="20" isRemoveLineWhenBlank="true" uuid="7c9388c0-c8e5-418b-9142-474345440634">
+						<property name="ShowOutOfBoundContent" value="true"/>
+					</reportElement>
+					<staticText>
+						<reportElement positionType="Float" x="0" y="0" width="494" height="20" isRemoveLineWhenBlank="true" uuid="119b27ad-68ae-4d80-b9cb-281604b39bee">
+							<printWhenExpression><![CDATA[($P{GENERICO_MOTIVAZIONE_SOGGIORNO_ITALIA} != null) || ($P{GENERICO_MOTIVAZIONE_DOMICILIO} == null && $P{RICONG_CODICE_FISCALE_FAMILIARE} != null) || ($P{GENERICO_MOTIVAZIONE_DOMICILIO} != null)]]></printWhenExpression>
+						</reportElement>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Informazioni supplementari]]></text>
+					</staticText>
+					<frame>
+						<reportElement positionType="Float" x="0" y="40" width="495" height="22" isRemoveLineWhenBlank="true" uuid="5ace94ee-26d9-468d-a32a-3d903ddfa158">
+							<property name="ShowOutOfBoundContent" value="true"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMANDA} != null]]></printWhenExpression>
+						</reportElement>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="0" y="0" width="495" height="34" isPrintWhenDetailOverflows="true" uuid="79984630-1217-4d17-8ae2-fd78a85af9f4"/>
+							<textElement verticalAlignment="Top">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Motivazione della deroga territoriale: " + ($P{MOTIVAZIONE_DOMANDA} == null ? "" : $P{MOTIVAZIONE_DOMANDA})]]></textFieldExpression>
+						</textField>
+						<rectangle>
+							<reportElement positionType="Float" mode="Opaque" x="0" y="34" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="980385a8-fdcb-4a70-8305-db1ade9b1a6d"/>
+							<graphicElement>
+								<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="62" width="495" height="22" isRemoveLineWhenBlank="true" uuid="58242dd1-ec37-4d4e-9b6e-1fd839f763a1">
+							<property name="ShowOutOfBoundContent" value="true"/>
+							<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_SOGGIORNO_ITALIA} != null]]></printWhenExpression>
+						</reportElement>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="0" y="0" width="495" height="34" isPrintWhenDetailOverflows="true" uuid="8a9e7f22-60df-423c-a730-bcaba65015b8"/>
+							<textElement verticalAlignment="Top">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Motivo del soggiorno in Italia: " + ($P{GENERICO_MOTIVAZIONE_SOGGIORNO_ITALIA} == null ? "" : $P{GENERICO_MOTIVAZIONE_SOGGIORNO_ITALIA})]]></textFieldExpression>
+						</textField>
+						<rectangle>
+							<reportElement positionType="Float" mode="Opaque" x="0" y="34" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="b29d8e7e-836c-4a83-b4c5-93b6777a3bce"/>
+							<graphicElement>
+								<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="84" width="495" height="20" isRemoveLineWhenBlank="true" uuid="ba92a075-72c8-4ac4-abdb-8d277ba87937">
+							<property name="ShowOutOfBoundContent" value="false"/>
+							<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_DOMICILIO} == null && $P{RICONG_CODICE_FISCALE_FAMILIARE} != null]]></printWhenExpression>
+						</reportElement>
+						<box topPadding="20"/>
+						<staticText>
+							<reportElement x="0" y="0" width="494" height="20" uuid="bfb31d03-8f63-4653-92ef-ff0a023d9e53"/>
+							<textElement verticalAlignment="Middle">
+								<font size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[RICONGIUNGIMENTO FAMILIARE CON]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="40" width="250" height="15" uuid="7f190155-405d-4e3b-bd9f-8a4b3be8af72"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Nome: " + ($P{RICONG_NOME_FAMILIARE} == null ? "" : $P{RICONG_NOME_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="40" width="225" height="15" uuid="e4fd6d22-802d-4b51-b40c-678ec0b18114"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Cognome: " + ($P{RICONG_COGNOME_FAMILIARE} == null ? "" : $P{RICONG_COGNOME_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="70" width="250" height="15" uuid="d97cc6df-09b7-41f1-ab65-1526bd398c8d"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Codice Fiscale: " + ($P{RICONG_CODICE_FISCALE_FAMILIARE} == null ? "" : $P{RICONG_CODICE_FISCALE_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="85" width="250" height="15" uuid="89633e29-7b00-44f2-af5f-58e938ddf894"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Grado di parentela: " + ($P{RICONG_GRADI_PARENTELA} == null ? "" : $P{RICONG_GRADI_PARENTELA})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="100" width="250" height="15" uuid="0553334d-e027-4cc6-abf4-5bf64800c577"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Medico: " + ($P{RICONG_COGNOME_E_NOME_MEDICO_FAMILIARE} == null ? "" : $P{RICONG_COGNOME_E_NOME_MEDICO_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="55" width="250" height="15" uuid="171b8f81-7e94-47d0-8a9e-27d45478f5d3"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Data di nascita: " + ($P{RICONG_DATA_NASCITA_FAMILIARE} == null ? "" : $P{RICONG_DATA_NASCITA_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="55" width="225" height="15" uuid="53b0c71f-1565-4a28-b46b-19146fbe3955"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Tipologia profilo sanitario: " + ($P{RICONG_TIPO_PROFILO_FAMILIARE} == null ? "" : $P{RICONG_TIPO_PROFILO_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="70" width="225" height="15" uuid="8507564a-7ad4-433e-801e-4e8f9945fecc"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Data fine iscrizione ASL familiare: " + ($P{RICONG_FINE_ASL_FAMILIARE} == null ? "" : $P{RICONG_FINE_ASL_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="85" width="225" height="15" uuid="f57e9af5-95c1-414e-875d-f9ef29952954"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Residenza in AURA: " + ($P{RICONG_RES_AURA_FAMILIARE} == null ? "" : $P{RICONG_RES_AURA_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="100" width="225" height="15" uuid="54a8b004-8df4-4882-9f31-073698c59d3a"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Domicilio in AURA: " + ($P{RICONG_DOM_AURA_FAMILIARE} == null ? "" : $P{RICONG_DOM_AURA_FAMILIARE})]]></textFieldExpression>
+						</textField>
+						<rectangle>
+							<reportElement positionType="Float" mode="Opaque" x="0" y="134" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="634f450a-a6b5-421d-bba4-2ac00f391dc1"/>
+							<graphicElement>
+								<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="104" width="495" height="20" isRemoveLineWhenBlank="true" uuid="19271302-af01-4fd2-9c46-1439e5de93d5">
+							<property name="ShowOutOfBoundContent" value="true"/>
+							<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_DOMICILIO} != null]]></printWhenExpression>
+						</reportElement>
+						<box topPadding="20"/>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="0" width="495" height="20" uuid="60d39b9c-917d-4bbc-b71f-b03e969d6537"/>
+							<textElement verticalAlignment="Top">
+								<font size="12" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[($P{DEROGA_RICONG_FAM} ? "MOTIVAZIONE DEROGA: " : "MOTIVAZIONE DOMICILIO: ") + ($P{GENERICO_MOTIVAZIONE_DOMICILIO}==null ? "" : $P{GENERICO_MOTIVAZIONE_DOMICILIO})]]></textFieldExpression>
+						</textField>
+						<frame>
+							<reportElement positionType="Float" x="0" y="40" width="495" height="15" isRemoveLineWhenBlank="true" uuid="aa49c450-b9f4-4891-8f5b-fe8bbcc051d4">
+								<property name="ShowOutOfBoundContent" value="true"/>
+								<printWhenExpression><![CDATA[$P{RICONG_CODICE_FISCALE_FAMILIARE} != null]]></printWhenExpression>
+							</reportElement>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="250" height="15" uuid="52e5020c-0947-435a-9506-6fdf385b336f"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Nome: " + ($P{RICONG_NOME_FAMILIARE} == null ? "" : $P{RICONG_NOME_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="0" width="225" height="15" uuid="e55b2063-546e-446f-a8e8-30ab367a5890"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Cognome: " + ($P{RICONG_COGNOME_FAMILIARE} == null ? "" : $P{RICONG_COGNOME_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="30" width="250" height="15" uuid="c3a987cc-31ba-4633-9413-d28802347c81"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Codice Fiscale: " + ($P{RICONG_CODICE_FISCALE_FAMILIARE} == null ? "" : $P{RICONG_CODICE_FISCALE_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="45" width="250" height="15" uuid="e369b86e-894c-4cb1-a360-8d6a81af8bc1"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Grado di parentela: " + ($P{RICONG_GRADI_PARENTELA} == null ? "" : $P{RICONG_GRADI_PARENTELA})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="60" width="250" height="15" uuid="2ae9c96b-2845-40ea-ab18-804cdb4ddbe4"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Medico: " + ($P{RICONG_COGNOME_E_NOME_MEDICO_FAMILIARE} == null ? "" : $P{RICONG_COGNOME_E_NOME_MEDICO_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="15" width="250" height="15" uuid="3334b680-40f9-4202-a721-301a98340510"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Data di nascita: " + ($P{RICONG_DATA_NASCITA_FAMILIARE} == null ? "" : $P{RICONG_DATA_NASCITA_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="15" width="225" height="15" uuid="8b5b0c53-3675-443e-a581-86e5ad1651f1"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Tipologia profilo sanitario: " + ($P{RICONG_TIPO_PROFILO_FAMILIARE} == null ? "" : $P{RICONG_TIPO_PROFILO_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="30" width="225" height="15" uuid="16f2ecb9-e2ad-4299-970d-2a5e1e769835"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Data fine iscrizione ASL familiare: " + ($P{RICONG_FINE_ASL_FAMILIARE} == null ? "" : $P{RICONG_FINE_ASL_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="45" width="225" height="15" uuid="311d4b32-f5a9-43b6-8733-a2bcd3329671"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Residenza in AURA: " + ($P{RICONG_RES_AURA_FAMILIARE} == null ? "" : $P{RICONG_RES_AURA_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="60" width="225" height="15" uuid="3b156a31-9b31-4b7e-afc2-49ff67f52454"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Domicilio in AURA: " + ($P{RICONG_DOM_AURA_FAMILIARE} == null ? "" : $P{RICONG_DOM_AURA_FAMILIARE})]]></textFieldExpression>
+							</textField>
+							<rectangle>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="95" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="15d43cef-2181-46a7-94aa-6ea5f7c115a0"/>
+								<graphicElement>
+									<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+								</graphicElement>
+							</rectangle>
+						</frame>
+						<frame>
+							<reportElement positionType="Float" x="0" y="55" width="495" height="15" isRemoveLineWhenBlank="true" uuid="d99dd915-4e78-4079-99a0-0ccf57a27530">
+								<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_DOMICILIO} != null && $P{GENERICO_MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+							</reportElement>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="495" height="15" uuid="e4f84822-41c5-4b1e-b5a8-ed3c7f611c4b"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Nome istituto / scuola / università: " + ($P{STUDIO_NOME_ISTITUTO} == null ? "" : $P{STUDIO_NOME_ISTITUTO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="15" width="250" height="15" uuid="65ebe1ba-6a81-423b-a20d-15596788ed92"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Comune: " + ($P{STUDIO_COMUNE_ISTITUTO} == null ? "" : $P{STUDIO_COMUNE_ISTITUTO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="15" width="225" height="15" uuid="877860ed-dc05-4020-9312-772a3e8a4c8a"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Indirizzo: " + ($P{STUDIO_INDIRIZZO_ISTITUTO} == null ? "" : $P{STUDIO_INDIRIZZO_ISTITUTO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="30" width="250" height="15" uuid="a8be0c50-1bce-43f6-8f1f-c40c259ff998"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Provincia : " + ($P{STUDIO_PROVINCIA_ISTITUTO} == null ? "" : $P{STUDIO_PROVINCIA_ISTITUTO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="30" width="225" height="15" uuid="f7878497-b703-46c0-9a9a-83cfa748db05"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Data fine iscrizione: " + ($P{STUDIO_DATA_FINE_ISCRIZIONE} == null ? "" : $P{STUDIO_DATA_FINE_ISCRIZIONE})]]></textFieldExpression>
+							</textField>
+							<rectangle>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="65" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="fccd43eb-ca24-4b70-8a94-9e1e55eed4a2"/>
+								<graphicElement>
+									<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+								</graphicElement>
+							</rectangle>
+						</frame>
+						<frame>
+							<reportElement positionType="Float" x="0" y="70" width="495" height="14" isRemoveLineWhenBlank="true" uuid="350fcd2f-084f-4dfd-a2c6-44679b0ad541">
+								<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_DOMICILIO} != null && $P{GENERICO_MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_TIPO_LAVORO} != null && $P{LAVORO_TIPO_LAVORO}.equalsIgnoreCase("AUTONOMO")]]></printWhenExpression>
+							</reportElement>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="250" height="15" uuid="d4179600-cc00-4421-84ce-7f52f3ccc642"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA["Tipo lavoro: " + ($P{LAVORO_TIPO_LAVORO} == null ? "" : $P{LAVORO_TIPO_LAVORO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="15" width="250" height="15" uuid="66483132-a615-4079-9e5e-524521c2d192"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Professione: " + ($P{LAVOROAUTON_PROFESSIONE} == null ? "" : $P{LAVOROAUTON_PROFESSIONE})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="0" width="225" height="15" uuid="e476b2fb-6434-4109-a613-db796aec706a"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Partita Iva: " + ($P{LAVOROAUTON_PARTITA_IVA} == null ? "" : $P{LAVOROAUTON_PARTITA_IVA})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="15" width="225" height="15" uuid="b1fef4cf-d776-4c00-8b3d-10dcdf06c6f7"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA["N° iscrizione all'albo: " + ($P{LAVOROAUTON_NUMERO_DI_ISCRIZIONE} == null ? "" : $P{LAVOROAUTON_NUMERO_DI_ISCRIZIONE})]]></textFieldExpression>
+							</textField>
+							<rectangle>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="50" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="6480bc02-bbcf-4207-b858-5907e517c47d"/>
+								<graphicElement>
+									<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+								</graphicElement>
+							</rectangle>
+						</frame>
+						<frame>
+							<reportElement positionType="Float" x="0" y="84" width="495" height="15" isRemoveLineWhenBlank="true" uuid="382f3c63-2429-4f5e-aaa5-ab3e141ddd65">
+								<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_DOMICILIO} != null && $P{GENERICO_MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_TIPO_LAVORO} != null && $P{LAVORO_TIPO_LAVORO}.equalsIgnoreCase("SUBORDINATO")]]></printWhenExpression>
+							</reportElement>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="250" height="15" uuid="775e28e4-8610-4f3a-8d49-ff363c597c9a"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA["Tipo lavoro: " + ($P{LAVORO_TIPO_LAVORO} == null ? "" : $P{LAVORO_TIPO_LAVORO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="30" width="250" height="15" uuid="46918cce-55df-49db-99a3-3407f4aa7d23"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA["Ditta/datore di lavoro: " + ($P{LAVOROSUB_DITTA_O_DATORE_LAVORO} == null ? "" : $P{LAVOROSUB_DITTA_O_DATORE_LAVORO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="30" width="225" height="15" uuid="a483edf0-367a-407c-857d-91b5130ff6be"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA["Data fine contratto: " + ($P{LAVOROSUB_DATA_FINE_CONTRATTO_LAVORO} == null ? "" : $P{LAVOROSUB_DATA_FINE_CONTRATTO_LAVORO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="45" width="250" height="15" uuid="3c72f2c9-a2d0-438a-a578-66c7c2801eda"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA["Indirizzo: " + ($P{LAVOROSUB_INDIRIZZO_LAVORO} == null ? "" : $P{LAVOROSUB_INDIRIZZO_LAVORO})]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="270" y="45" width="225" height="15" uuid="4e4a7cce-40ab-4d1b-ab7c-25303e422a9c"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA["Telefono: " + ($P{LAVOROSUB_NR_TELEFONO_DATORE_LAVORO} == null ? "" : $P{LAVOROSUB_NR_TELEFONO_DATORE_LAVORO})]]></textFieldExpression>
+							</textField>
+							<rectangle>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="80" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="8f0743dc-21e2-4ec9-a142-f0f12e287ee3"/>
+								<graphicElement>
+									<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+								</graphicElement>
+							</rectangle>
+						</frame>
+						<frame>
+							<reportElement positionType="Float" x="0" y="99" width="495" height="15" isRemoveLineWhenBlank="true" uuid="e805dd1c-1568-42a2-a82c-1490a84254b7">
+								<printWhenExpression><![CDATA[$P{GENERICO_MOTIVAZIONE_DOMICILIO} != null && $P{GENERICO_MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "CURA" )]]></printWhenExpression>
+							</reportElement>
+							<rectangle>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="20" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="89af0aec-1b56-41d9-ae4d-dde205c919c2"/>
+								<graphicElement>
+									<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+								</graphicElement>
+							</rectangle>
+						</frame>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="124" width="495" height="20" isRemoveLineWhenBlank="true" uuid="c20307f1-36ca-4b8a-85c0-4a3c2c084e23">
+							<property name="ShowOutOfBoundContent" value="false"/>
+							<printWhenExpression><![CDATA[$P{ALLEGATI} != null]]></printWhenExpression>
+						</reportElement>
+						<box topPadding="0"/>
+						<staticText>
+							<reportElement positionType="Float" x="0" y="0" width="494" height="20" uuid="aa376f66-0fab-458d-826e-a35a95f5bdb4"/>
+							<box topPadding="0"/>
+							<textElement verticalAlignment="Middle">
+								<font size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[ALLEGATI]]></text>
+						</staticText>
+						<componentElement>
+							<reportElement x="0" y="39" width="495" height="30" uuid="69a77cbf-c639-4a40-833b-c3a52a637343"/>
+							<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+								<datasetRun subDataset="ALLEGATI_DATASET" uuid="93adcfc4-5ff3-4567-ab81-d043eb62d798">
+									<dataSourceExpression><![CDATA[$P{ALLEGATI}]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="30" width="495">
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement positionType="Float" x="0" y="0" width="250" height="30" uuid="9ddedc6d-2670-4a7b-aaa1-8e14e9b0748a"/>
+										<textFieldExpression><![CDATA["Tipo: " + ($F{tipo} == null ? "" : $F{tipo}) + "\n"]]></textFieldExpression>
+									</textField>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement positionType="Float" x="270" y="0" width="225" height="30" uuid="32554de0-894a-4e6d-af89-5debc617a9cc"/>
+										<textFieldExpression><![CDATA["Nome: " + ($F{nome} == null ? "" : $F{nome}) + "\n"]]></textFieldExpression>
+									</textField>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+						<rectangle>
+							<reportElement positionType="Float" mode="Opaque" x="0" y="80" width="495" height="2" forecolor="#C5C6C6" backcolor="#C5C6C6" uuid="b3143e6d-e1bb-481d-a2b4-a833ef68e423"/>
+							<graphicElement>
+								<pen lineStyle="Solid" lineColor="#C5C6C6"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="144" width="495" height="28" uuid="bcc285b2-a3fc-4cc0-a480-f05ad267fa55">
+							<property name="ShowOutOfBoundContent" value="true"/>
+						</reportElement>
+						<box topPadding="10"/>
+						<staticText>
+							<reportElement positionType="Float" x="0" y="0" width="234" height="20" uuid="57208838-dd8e-4597-bcc2-e3831128e888"/>
+							<textElement verticalAlignment="Middle">
+								<font size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[DATI MEDICO RICHIESTO]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="40" width="250" height="15" uuid="cdab0452-817c-4def-b363-a98bafbc6d1e"/>
+							<textElement verticalAlignment="Middle" markup="styled">
+								<font size="10" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Nome: " + ($P{MEDICORICHIESTO_NOME} == null ? "" : $P{MEDICORICHIESTO_NOME})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="40" width="225" height="15" uuid="f5795e86-6cd7-4a41-b126-f23bde60b15a"/>
+							<textElement verticalAlignment="Middle" markup="styled">
+								<font size="10" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Cognome: " + ($P{MEDICORICHIESTO_COGNOME} == null ? "" : $P{MEDICORICHIESTO_COGNOME})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="65" width="250" height="15" uuid="d7ab3488-410a-40e5-8e7f-9c67e358f9d0"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Tipologia: " + ($P{MEDICORICHIESTO_TIPOLOGIA} == null ? "" : $P{MEDICORICHIESTO_TIPOLOGIA})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="65" width="225" height="15" uuid="0058ca2c-70a5-45f7-bac9-81131f38f6ac"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["ASL: " + ($P{MEDICORICHIESTO_ASL} == null ? "" : $P{MEDICORICHIESTO_ASL})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="90" width="250" height="15" uuid="43cb2d27-0fe8-4e90-bddf-bd1f64ae5a69"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Distretto: " + ($P{MEDICORICHIESTO_DISTRETTO} == null ? "" : $P{MEDICORICHIESTO_DISTRETTO})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="90" width="225" height="15" uuid="830045f5-53be-498d-add2-dc5ce9a6b0d8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Ambito: " + ($P{MEDICORICHIESTO_AMBITO} == null ? "" : $P{MEDICORICHIESTO_AMBITO})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="115" width="250" height="15" uuid="99c71113-e98c-4465-96d0-bbb2bd564c6f"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Richiesto fino al: " + ($P{MEDICORICHIESTO_RICHIESTO_MEDICO_FINO_AL} == null ? "" : $P{MEDICORICHIESTO_RICHIESTO_MEDICO_FINO_AL})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="115" width="225" height="15" uuid="0ea5bac4-a72a-40bf-8932-24eec7c7df13"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Autolimitato: " + ($P{MEDICORICHIESTO_FLAG_AUTOLIMITATO} == null ? "" : $P{MEDICORICHIESTO_FLAG_AUTOLIMITATO})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="140" width="250" height="15" uuid="0e331291-bd0f-487b-a29e-c34cc063bd45"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Massimale: " + ($P{MEDICORICHIESTO_MASSIMALE} == null ? "" : $P{MEDICORICHIESTO_MASSIMALE})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="155" width="250" height="15" uuid="c2f3cb02-8995-451a-a07e-6117bf361995"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Massimale in deroga: " + ($P{MEDICORICHIESTO_MASSIMALE_IN_DEROGA} == null ? "" : $P{MEDICORICHIESTO_MASSIMALE_IN_DEROGA})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="170" width="250" height="15" uuid="d88831f0-4223-416b-8eba-1b1a09cb7ae9"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Massimale temporanei: " + ($P{MEDICORICHIESTO_MASSIMALE_TEMPORANEI} == null ? "" : $P{MEDICORICHIESTO_MASSIMALE_TEMPORANEI})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="185" width="250" height="15" uuid="28ad3cb1-76e3-48a1-8232-d3eecaf4ed71"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Massimale riservato fascia età  0-6: " + ($P{MEDICORICHIESTO_MASSIMALE_PER_FASCIA_ETA} == null ? "" : $P{MEDICORICHIESTO_MASSIMALE_PER_FASCIA_ETA})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="140" width="225" height="15" uuid="4a5020db-952a-4569-92b2-72de77608da2"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Assistiti netti: " + ($P{MEDICORICHIESTO_ASSISTITI_NETTI} == null ? "" : $P{MEDICORICHIESTO_ASSISTITI_NETTI})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="155" width="225" height="15" uuid="d0a79cb3-d5a4-4cdb-bc01-877777c64604"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Assistiti netti 0-6: " + ($P{MEDICORICHIESTO_ASSISTITI_NETTI_0-6} == null ? "" : $P{MEDICORICHIESTO_ASSISTITI_NETTI_0-6})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="170" width="225" height="15" uuid="f0fc270e-84c1-46fc-9923-b64e17761fcf"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Assistiti lordi: " + ($P{MEDICORICHIESTO_ASSISTITI_LORDI} == null ? "" : $P{MEDICORICHIESTO_ASSISTITI_LORDI})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="210" width="250" height="15" uuid="3dbf311f-96a9-4b92-9e7c-e3951fec0019"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Disponibilità piena: " + ($P{MEDICORICHIESTO_DISPONIBILITA_PIENA} == null ? "" : $P{MEDICORICHIESTO_DISPONIBILITA_PIENA})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="0" y="225" width="250" height="15" uuid="c287b9c2-6130-442b-97a1-74596a82e1e2"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Disponibilità per Ricongiungimento: " + ($P{MEDICORICHIESTO_DISPONIBILITA_RICONG} == null ? "" : $P{MEDICORICHIESTO_DISPONIBILITA_RICONG})]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="270" y="210" width="225" height="15" uuid="31b6785d-4fe1-460f-b7ff-819e0b4b2d91"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Disponibilità temporanea: " + ($P{MEDICORICHIESTO_DISPONIBILITA_TEMP} == null ? "" : $P{MEDICORICHIESTO_DISPONIBILITA_TEMP})]]></textFieldExpression>
+						</textField>
+					</frame>
+				</frame>
+			</frame>
+		</band>
+		<band height="107" splitType="Stretch">
+			<printWhenExpression><![CDATA[$P{INTESTAZIONE_STATO_PRATICA} != null && ($P{INTESTAZIONE_STATO_PRATICA}.equalsIgnoreCase("COMPLETATA") || $P{INTESTAZIONE_STATO_PRATICA}.equalsIgnoreCase("CHIUSA"))]]></printWhenExpression>
+			<break>
+				<reportElement x="0" y="10" width="96" height="1" uuid="124d5eab-b744-4852-9d90-2233e6352bf7"/>
+			</break>
+			<textField>
+				<reportElement x="30" y="19" width="509" height="26" uuid="a249fbb2-f19f-41c7-b5c2-c662d15c54a0"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="10" y="45" width="537" height="42" uuid="b496ab5e-08f5-430d-a18a-445b4966428e">
+					<property name="ShowOutOfBoundContent" value="false"/>
+				</reportElement>
+				<box bottomPadding="10">
+					<pen lineWidth="3.5" lineColor="#0473B8"/>
+				</box>
+				<staticText>
+					<reportElement positionType="Float" x="20" y="20" width="495" height="20" uuid="1e6a82fd-5a91-4358-843d-0b16f84bf14c"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ACCETTAZIONE RICHIESTA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="60" width="250" height="15" uuid="3d5e92ff-d010-405e-a286-a4b43b49e077"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Tipologia profilo: " + ($P{ACCETRICHIESTA_TIPOLOGIA_PROFILO} == null ? "" : $P{ACCETRICHIESTA_TIPOLOGIA_PROFILO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="85" width="250" height="15" uuid="9a4330b3-f6c6-40ef-85fa-657c840ff14a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Assistenza da: " + ($P{ACCETRICHIESTA_DURATA_ASSISTENZA_DA} == null ? "" : $P{ACCETRICHIESTA_DURATA_ASSISTENZA_DA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="85" width="225" height="15" uuid="a5a02859-3a09-4b95-9514-ab93b7c3e760"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Medico generico: " + ($P{ACCETRICHIESTA_MEDICO_GENERICO} == null ? "" : $P{ACCETRICHIESTA_MEDICO_GENERICO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="100" width="250" height="15" uuid="64a2be1f-3707-4f33-9770-2c85b5615d2c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Assistenza a: " + ($P{ACCETRICHIESTA_DURATA_ASSISTENZA_A} == null ? "" : $P{ACCETRICHIESTA_DURATA_ASSISTENZA_A})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="125" width="250" height="15" uuid="c0bbe6a3-5b81-4326-8a93-628ecd94b369"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Deroga pediatra: " + ($P{ACCETRICHIESTA_DEROGA_PEDIATRA} == null ? "" : $P{ACCETRICHIESTA_DEROGA_PEDIATRA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="125" width="225" height="15" uuid="afb9a64e-2bd2-4ae6-ba31-b7186615ebf4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Deroga territoriale: " + ($P{ACCETRICHIESTA_DEROGA_TERRITORIALE} == null ? "" : $P{ACCETRICHIESTA_DEROGA_TERRITORIALE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="140" width="250" height="15" uuid="2c4fbb68-af62-43c1-9ef7-13db8ec6e144"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Deroga associazione: " + ($P{ACCETRICHIESTA_DEROGA_ASSOCIAZIONE} == null ? "" : $P{ACCETRICHIESTA_DEROGA_ASSOCIAZIONE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="140" width="225" height="15" uuid="78a77f18-cf04-4dfd-b858-afc48854468f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Deroga massimale: " + ($P{ACCETRICHIESTA_DEROGA_MASSIMALE} == null ? "" : $P{ACCETRICHIESTA_DEROGA_MASSIMALE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="20" y="155" width="250" height="15" uuid="bbfe7720-1231-4106-882c-96287d143203"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Deroga massimale temporaneo: " + ($P{ACCETRICHIESTA_DEROGA_MASSIMALE_TEMP} == null ? "" : $P{ACCETRICHIESTA_DEROGA_MASSIMALE_TEMP})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="155" width="225" height="15" uuid="14caec75-8fdf-4013-a483-1198621a06ac"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Ricongiungimento familiare: " + ($P{ACCETRICHIESTA_RICONG_FAMILIARE} == null ? "" : $P{ACCETRICHIESTA_RICONG_FAMILIARE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="290" y="180" width="225" height="15" uuid="9c52a034-13d0-43b4-805c-31cb619b600c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+						<paragraph lineSpacing="Double"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Il medico è stato revocato: " + ($P{ACCETRICHIESTA_MEDICO_REVOCATO} == null ? "" : $P{ACCETRICHIESTA_MEDICO_REVOCATO})]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22">
+			<textField>
+				<reportElement x="180" y="4" width="100" height="15" uuid="dc9abc38-0d72-4785-83b4-40febd6054bb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="4" width="100" height="15" uuid="a3f44026-269d-4a17-8329-a885b426d721"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" di " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

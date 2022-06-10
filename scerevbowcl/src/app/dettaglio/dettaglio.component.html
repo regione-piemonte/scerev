@@ -1,0 +1,1002 @@
+<!--
+ Copyright Regione Piemonte - 2022
+ SPDX-License-Identifier: EUPL-1.2
+-->
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+	rel="stylesheet">
+
+<div class="row scerev" style="padding-top: 5px; padding-bottom: 5px;">
+	<div class="col-md-1"></div>
+	<div class="col">
+		<!-- head -->
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a class="navBackLink"
+					(click)="backButton()">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Dettaglio
+					{{dettaglio.dati_richiedente.cognome}}
+					{{dettaglio.dati_richiedente.nome}}</li>
+			</ol>
+		</nav>
+		
+		<div class="mb-2">
+			<a class="navBackLink breadcrumb-item" (click)="goBack()"><i class="fa fa-angle-left mr-2"></i>Indietro</a>
+		</div>
+		
+		<div id="alertSuccesso" class="alert alert-success" role="alert"
+			*ngIf="client.idFeedback == 200">
+			<h4 class="alert-heading">
+				<i class="fa fa-check" aria-hidden="true"></i> {{client.messaggioFeedback}}
+				<button style="outline: none;" type="button" class="close"
+					aria-label="Close" (click)="chiudiSuccess()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</h4>
+		</div>
+		
+		<div id="alertFail" class="alert alert-danger" role="alert"
+			*ngIf="client.idFeedback && client.idFeedback != 200">
+			<h4 class="alert-heading">
+				<i class="fa fa-check" aria-hidden="true"></i> {{client.messaggioFeedback}}
+				<button style="outline: none;" type="button" class="close"
+					aria-label="Close" (click)="chiudiDanger()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</h4>
+		</div>
+
+		<div class="row" style="font-size: 22px;">
+			Richiesta n.&nbsp; <label id="numRichiesta">{{dettaglio.numPratica ? dettaglio.numPratica : '-'}}</label> &nbsp; - &nbsp; <label
+				id="statoRichiesta">{{dettaglio.stato}}
+			{{dettaglio.msgIfClosed ? dettaglio.msgIfClosed : ''}}
+		</label>
+		</div>
+		<div class="row" *ngIf="(dettaglio.stato != 'Chiusa' && dettaglio.stato != 'In revisione' && dettaglio.stato != 'Respinta' && dettaglio.stato != 'Domanda di revoca' && dettaglio.cfInCarico != client.userInfo.codFisc)">
+			<button id="inCarico" type="button"
+				class="btn btn-outline-success btn-sm" (click)="prendiInCarico()"
+				style="padding-bottom: 0px; padding-top: 0px; margin-left: 2px;">Prendi in
+				carico</button>
+		</div>
+		<div class="row" *ngIf="dettaglio.inCarico" style="font-size: 14px;">
+			<p>Richiesta in carico a {{dettaglio.inCarico ? dettaglio.inCarico : '-'}}</p>
+		</div>
+
+		<div class="row" style="margin-top: 15px">
+			<div class="col-md-12" id="accordionExample"
+				style="padding: 0px 0px 0px 0px;">
+				<div class="card" style="margin-bottom: 15px;">
+					<div class="card-header" id="headingOne">
+						<h2 class="mb-0">
+							<button class="btn btn-link" type="button"
+								(click)="isCollapsed = !isCollapsed"
+								[attr.aria-expanded]="!isCollapsed"
+								aria-controls="collapseExample">Dati richiedente</button>
+						</h2>
+					</div>
+
+					<div id="collapseRichiedente" class="collapse"
+						[ngbCollapse]="isCollapsed">
+						<div class="card-body">
+
+							<div class="row">
+								<div class="col-auto">
+									<i class="fa fa-user" style="font-size: 60px"></i>
+								</div>
+								<div class="col">
+									<div class="row" *ngIf="dettaglio.tipologieRichiesta != null && dettaglio.tipologieRichiesta != undefined && dettaglio.tipologieRichiesta != ''">
+										<div class="col"></div>
+										<div class="col"></div>
+										<div class="col"></div>
+										<div class="col-auto" style="float: right; background-color: #007bff; color: white; line-height: 30px; font-style: italic; margin-bottom: 20px;">{{dettaglio.tipologieRichiesta}}
+										</div>
+									</div>
+									<div class="row">
+										<div class="col" style="line-height: 30px;">
+											<b>Nome</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Cognome</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Codice Fiscale</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Et&agrave;</b>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.nome ? dettaglio.dati_richiedente.nome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.cognome ? dettaglio.dati_richiedente.cognome : '-'}}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.codice_fiscale ? dettaglio.dati_richiedente.codice_fiscale : '-'}}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.eta ? dettaglio.dati_richiedente.eta : '-'}}</div>
+									</div>
+									<div class="row">
+										<div class="col" style="line-height: 30px;">
+											<b>Data di Nascita</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Luogo di Nascita</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Cittadinanza</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Telefono</b>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.data_nascita ? dettaglio.dati_richiedente.data_nascita : '-'}}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.luogo_nascita ? dettaglio.dati_richiedente.luogo_nascita : '-'}}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.cittadinanza ? dettaglio.dati_richiedente.cittadinanza : '-'}}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.telefono ? dettaglio.dati_richiedente.telefono : '-' }}</div>
+									</div>
+									<div class="row">
+										<div class="col" style="line-height: 30px;">
+											<b>Residenza Dichiarata</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Domicilio dichiarato</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>ASL Residenza dichiarata</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>ASL Domicilio dichiarato</b>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.residenza_dichiarata ? dettaglio.dati_richiedente.residenza_dichiarata : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.domicilio_dichiarato ? dettaglio.dati_richiedente.domicilio_dichiarato : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.asl_residenza_dichiarata ? dettaglio.dati_richiedente.asl_residenza_dichiarata : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.asl_domicilio_dichiarato ? dettaglio.dati_richiedente.asl_domicilio_dichiarato : '-' }}</div>
+									</div>
+									<div class="row">
+										<div class="col" style="line-height: 30px;">
+											<b>Distretto domicilio dichiarato</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Ambito domicilio dichiarato</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.distretto_domicilio_dichiarato ? dettaglio.dati_richiedente.distretto_domicilio_dichiarato : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_richiedente.ambito_domicilio_dichiarato ? dettaglio.dati_richiedente.ambito_domicilio_dichiarato : '-' }}</div>
+										<div class="col" ></div>
+										<div class="col" ></div>
+									</div>
+								</div>
+							</div>
+
+							<hr width=91.25% align="right" />
+
+							
+							<div class="row" *ngIf="dettaglio.dati_delegato != null" style="padding-top: 30px;">
+								<div class="col-auto" style="padding-left: 57px;"></div>
+								<div class="col">
+									<div class="ax_default heading_2" style="padding-left: 15px;">
+										<div class="text">
+											<span>
+												<p style="font-size: 20px">
+													<b>Dati delegato</b>
+												</p>
+											</span>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col" style="line-height: 30px;">
+											<b>Nome delegato</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Cognome delegato</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Codice fiscale delegato</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_delegato.nome ? dettaglio.dati_delegato.nome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_delegato.cognome ? dettaglio.dati_delegato.cognome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_delegato.codice_fiscale ? dettaglio.dati_delegato.codice_fiscale : '-'}}</div>
+										<div class="col text-uppercase" ></div>
+									</div>
+								</div>
+							</div>
+
+							<hr width=91.25% align="right" *ngIf="dettaglio.dati_delegato != null"/>
+
+							<div class="row" style="padding-top: 30px;">
+								<div class="col-auto" style="padding-left: 57px;"></div>
+								<div class="col">
+									<div class="ax_default heading_2" style="padding-left: 15px;">
+										<div class="text">
+											<span>
+												<p style="font-size: 20px">
+													<b>Dati presenti in AURA</b>
+												</p>
+											</span>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id == null">
+										<div class="col" style="line-height: 30px;">
+											<b>Nome medico</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Cognome medico</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Tipo movimento</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Data movimento</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id == null">
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.nome ? dettaglio.dati_aura_medico.nome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.cognome ? dettaglio.dati_aura_medico.cognome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.movimento ? dettaglio.dati_aura_medico.movimento : '-'}}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.dataMovimento ? dettaglio.dati_aura_medico.dataMovimento : '-'}}</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id == null">
+										<div class="col" style="line-height: 30px;">
+											<b>Residenza in AURA</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Domicilio in AURA</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>ASL di domicilio in AURA</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Tipologia profilo sanitario</b>
+										</div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id == null">
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.residenzaInAura ? dettaglio.dati_aura_medico.residenzaInAura : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.domicilioInAura ? dettaglio.dati_aura_medico.domicilioInAura : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.aslDomicilioInAura ? dettaglio.dati_aura_medico.aslDomicilioInAura : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.tipologiaProfiloSanitario ? dettaglio.dati_aura_medico.tipologiaProfiloSanitario : '-' }}</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id == null">
+										<div class="col" style="line-height: 30px;">
+											<b>ASL di iscrizione</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Data di iscrizione ASL</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Data fine iscrizione ASL</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id == null">
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.aslIscrizione ? dettaglio.dati_aura_medico.aslIscrizione : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.dataIscrizioneAsl ? dettaglio.dati_aura_medico.dataIscrizioneAsl : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_aura_medico.dataFineIscrizioneAsl ? dettaglio.dati_aura_medico.dataFineIscrizioneAsl : '-' }}</div>
+										<div class="col text-uppercase" ></div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.dati_aura_medico.id != null">
+										<div class="col text-uppercase">{{ dettaglio.dati_aura_medico.id }}</div>
+										<div class="col"></div>
+										<div class="col"></div>
+										<div class="col"></div>
+									</div>
+								</div>
+							</div>
+
+							<hr width=91.25% align="right" />
+
+							<div class="row" *ngIf="dettaglio.dati_medico_extra != null" style="padding-top: 30px;">
+								<div class="col-auto" style="padding-left: 57px;"></div>
+								<div class="col">
+									<div class="ax_default heading_2" style="padding-left: 15px;">
+										<div class="text">
+											<span>
+												<p style="font-size: 20px">
+													<b>Dati medico extra-regione</b>
+												</p>
+											</span>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_medico_extra.id == null">
+										<div class="col" style="line-height: 30px;">
+											<b>Regione</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Azienda Sanitaria</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Nome</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Cognome</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.dati_medico_extra.id == null">
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_extra.regione ? dettaglio.dati_medico_extra.regione : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_extra.aziendaSanitaria ? dettaglio.dati_medico_extra.aziendaSanitaria : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_extra.nome ? dettaglio.dati_medico_extra.nome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_extra.cognome ? dettaglio.dati_medico_extra.cognome : '-' }}</div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.dati_medico_extra.id != null">
+										<div class="col text-uppercase" style="line-height: 30px;">{{dettaglio.dati_medico_extra.id}}</div>
+									</div>
+								</div>
+								<hr width=91.25% align="right" />
+							</div>
+
+
+							<div class="row" style="padding-top: 30px;">
+								<div class="col-auto" style="padding-left: 57px;"></div>
+								<div class="col">
+									<div class="ax_default heading_2" style="padding-left: 15px;">
+										<div class="text">
+											<span>
+												<p style="font-size: 20px">
+													<b>Informazioni supplementari</b>
+												</p>
+											</span>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.motivoSoggiorno">
+										<div class="col" style="line-height: 30px;">
+											<b>Motivo soggiorno</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.motivoSoggiorno">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.motivoSoggiorno ? dettaglio.informazioni_supplementari.motivoSoggiorno : "-"}}</div>
+
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.motivoDomicilio">
+										<div class="col" style="line-height: 30px;">
+											<b>Motivo</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.motivoDomicilio">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.motivoDomicilio ? dettaglio.informazioni_supplementari.motivoDomicilio : "-"}}</div>
+
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.nomeFamiliare || dettaglio.informazioni_supplementari.cognomeFamiliare || dettaglio.informazioni_supplementari.codiceFiscale || dettaglio.informazioni_supplementari.rapportoParentela">
+										<div class="col" style="line-height: 30px;">
+											<b>Nome familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Cognome familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Codice fiscale</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Rapporto di parentela</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.nomeFamiliare || dettaglio.informazioni_supplementari.cognomeFamiliare || dettaglio.informazioni_supplementari.codiceFiscale || dettaglio.informazioni_supplementari.rapportoParentela">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.nomeFamiliare ? dettaglio.informazioni_supplementari.nomeFamiliare : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.cognomeFamiliare ? dettaglio.informazioni_supplementari.cognomeFamiliare : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.codiceFiscale ? dettaglio.informazioni_supplementari.codiceFiscale : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.rapportoParentela ? dettaglio.informazioni_supplementari.rapportoParentela : "-"}}</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.dataNascitaFamiliare || dettaglio.informazioni_supplementari.medicoFamiliare || dettaglio.informazioni_supplementari.medicoDiverso || dettaglio.informazioni_supplementari.tipoProfiloFamiliare || dettaglio.informazioni_supplementari.dataFineAslFamiliare">
+										<div class="col" style="line-height: 30px;">
+											<b>Data di nascita familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Medico familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Tipologia profilo sanitario familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Data fine iscrizione ASL familiare</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.dataNascitaFamiliare || dettaglio.informazioni_supplementari.medicoFamiliare || dettaglio.informazioni_supplementari.medicoDiverso || dettaglio.informazioni_supplementari.tipoProfiloFamiliare || dettaglio.informazioni_supplementari.dataFineAslFamiliare">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.dataNascitaFamiliare ? dettaglio.informazioni_supplementari.dataNascitaFamiliare : "-"}}</div>
+										<div class="col" [style.color]="dettaglio.informazioni_supplementari.medicoDiverso ? 'red' : 'black'">{{dettaglio.informazioni_supplementari.medicoFamiliare ? dettaglio.informazioni_supplementari.medicoFamiliare : "-"}}
+											<span *ngIf="dettaglio.informazioni_supplementari.medicoDiverso" style="font-size: 14px;"><br>{{dettaglio.informazioni_supplementari.medicoDiverso}}   <i class="fa fa-close"></i></span>
+										</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.tipoProfiloFamiliare ? dettaglio.informazioni_supplementari.tipoProfiloFamiliare : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.dataFineAslFamiliare ? dettaglio.informazioni_supplementari.dataFineAslFamiliare : "-"}}</div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.residenzaFamiliare || dettaglio.informazioni_supplementari.domicilioFamiliare">
+										<div class="col" style="line-height: 30px;">
+											<b>Residenza in AURA familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Domicilio in AURA familiare</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.residenzaFamiliare || dettaglio.informazioni_supplementari.domicilioFamiliare">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.residenzaFamiliare ? dettaglio.informazioni_supplementari.residenzaFamiliare : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.domicilioFamiliare ? dettaglio.informazioni_supplementari.domicilioFamiliare : "-"}}</div>
+										<div class="col" ></div>
+										<div class="col" ></div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.professione || dettaglio.informazioni_supplementari.partitaIva || dettaglio.informazioni_supplementari.nIscrizione">
+										<div class="col" style="line-height: 30px;">
+											<b>Professione</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Partita IVA</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>N.Iscrizione a ordine professionale/collegio/camera di
+											commercio</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.professione || dettaglio.informazioni_supplementari.partitaIva || dettaglio.informazioni_supplementari.nIscrizione">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.professione ? dettaglio.informazioni_supplementari.professione : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.partitaIva ? dettaglio.informazioni_supplementari.partitaIva : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.nIscrizione ? dettaglio.informazioni_supplementari.nIscrizione : "-"}}</div>
+										<div class="col" ></div>
+									</div>
+
+
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.dittaODatoreDiLavoro || dettaglio.informazioni_supplementari.nrTelefonoDatoreLavoro || dettaglio.informazioni_supplementari.dataFineContrattoLavoro">
+										<div class="col" style="line-height: 30px;">
+											<b>Ditta/datore di lavoro</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Telefono datore di lavoro</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Data fine Contratto</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.dittaODatoreDiLavoro || dettaglio.informazioni_supplementari.nrTelefonoDatoreLavoro || dettaglio.informazioni_supplementari.dataFineContrattoLavoro">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.dittaODatoreDiLavoro ? dettaglio.informazioni_supplementari.dittaODatoreDiLavoro : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.nrTelefonoDatoreLavoro ? dettaglio.informazioni_supplementari.nrTelefonoDatoreLavoro : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.dataFineContrattoLavoro ? (dettaglio.informazioni_supplementari.dataFineContrattoLavoro | date:'dd/MM/yyyy') : "-"}}</div>
+										<div class="col" ></div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.comuneLavoro || dettaglio.informazioni_supplementari.provinciaLavoro || dettaglio.informazioni_supplementari.indirizzoLavoro">
+										<div class="col" style="line-height: 30px;">
+											<b>Comune di lavoro</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Provincia di Lavoro</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Indirizzo di lavoro</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.comuneLavoro || dettaglio.informazioni_supplementari.provinciaLavoro || dettaglio.informazioni_supplementari.indirizzoLavoro">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.comuneLavoro ? dettaglio.informazioni_supplementari.comuneLavoro : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.provinciaLavoro ? dettaglio.informazioni_supplementari.provinciaLavoro : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.indirizzoLavoro == null ? null : dettaglio.informazioni_supplementari.indirizzoLavoro +", "+dettaglio.informazioni_supplementari.civicoLavoro}}</div>
+										<div class="col" ></div>
+									</div>
+
+
+
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.nomeIstitutoStudio || dettaglio.informazioni_supplementari.dataFineIscrizioneStudio">
+										<div class="col" style="line-height: 30px;">
+											<b>Istituto di studio</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Data fine iscrizione di studio</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.nomeIstitutoStudio || dettaglio.informazioni_supplementari.dataFineIscrizioneStudio">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.nomeIstitutoStudio ? dettaglio.informazioni_supplementari.nomeIstitutoStudio : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.dataFineIscrizioneStudio | date:'dd/MM/yyyy'}}</div>
+										<div class="col" ></div>
+										<div class="col" ></div>
+									</div>
+
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.comuneIstitutoStudio || dettaglio.informazioni_supplementari.provinciaIstitutoStudio || dettaglio.informazioni_supplementari.indirizzoIstitutoStudio">
+										<div class="col" style="line-height: 30px;">
+											<b>Comune dell'istituto</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Provincia dell'istituto</b>
+										</div>
+										<div class="col" style="line-height: 30px;">
+											<b>Indirizzo dell'istituto</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="dettaglio.informazioni_supplementari.comuneIstitutoStudio || dettaglio.informazioni_supplementari.provinciaIstitutoStudio || dettaglio.informazioni_supplementari.indirizzoIstitutoStudio">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.comuneIstitutoStudio ? dettaglio.informazioni_supplementari.comuneIstitutoStudio : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.provinciaIstitutoStudio ? dettaglio.informazioni_supplementari.provinciaIstitutoStudio : "-"}}</div>
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.indirizzoIstitutoStudio == null ? null : dettaglio.informazioni_supplementari.indirizzoIstitutoStudio +", "+dettaglio.informazioni_supplementari.civicoIstitutoStudio}}</div>
+										<div class="col" ></div>
+									</div>
+
+									<div class="row" *ngIf="this.dettaglio.stato == 'Domanda di revoca'">
+										<div class="col" style="line-height: 30px;">
+											<b>Motivo di revoca</b>
+										</div>
+										<div class="col" style="line-height: 30px;"></div>
+										<div class="col" style="line-height: 30px;"></div>
+										<div class="col" style="line-height: 30px;"></div>
+									</div>
+									<div class="row" *ngIf="this.dettaglio.stato == 'Domanda di revoca'">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.motivoRevoca ? dettaglio.informazioni_supplementari.motivoRevoca : "-"}}</div>
+										<div class="col" ></div>
+										<div class="col" ></div>
+										<div class="col" ></div>
+									</div>
+
+									<div class="row" *ngIf="this.dettaglio.informazioni_supplementari?.motivazioneDerogaTerritoriale">
+										<div class="col" style="line-height: 30px;">
+											<b>Motivo deroga territoriale</b>
+										</div>
+									</div>
+									<div class="row" *ngIf="this.dettaglio.informazioni_supplementari?.motivazioneDerogaTerritoriale">
+										<div class="col text-uppercase" >{{dettaglio.informazioni_supplementari.motivazioneDerogaTerritoriale ? dettaglio.informazioni_supplementari.motivazioneDerogaTerritoriale : "-"}}</div>
+									</div>
+								</div>
+							</div>
+
+							<hr width=91.25% align="right" />
+
+							<div class="row" style="padding-top: 30px;" >
+								<div class="col-auto" style="padding-left: 57px;"></div>
+								<div class="col">
+									<div class="ax_default heading_2" style="padding-left: 15px;">
+										<div class="text">
+											<span>
+												<p style="font-size: 20px">
+													<b>Allegati</b>
+												</p>
+											</span>
+										</div>
+									</div>
+									<div class="row" *ngFor="let allegato of client.dettaglio.allegati; let i=index" style="padding-bottom: 10px;">
+											<div class="col-md-12">
+												<b>{{allegato.tipoAllegato ? allegato.tipoAllegato : '-' }}</b>
+											</div>
+										<div class="row">
+											<div class="col" style="cursor: pointer;" (click)="getAllegato(i,j)" *ngFor="let allegato of client.dettaglio.allegati[i].allegati; let j=index">{{allegato.nomeAllegato ? allegato.nomeAllegato : '-' }}</div>
+											<!--  (click)="" getAllegato({{allegato.pkAllegato}}) -->
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="card" style="margin-bottom: 15px;">
+					<div class="card-header" id="headingTwo">
+						<h2 class="mb-0">
+							<button class="btn btn-link" type="button"
+								(click)="isCollapsedMedico = !isCollapsedMedico"
+								[attr.aria-expanded]="!isCollapsedMedico"
+								aria-controls="collapseMedico">{{ this.dettaglio.stato == 'Domanda di revoca' ? 'Dati medico revocato' : 'Dati medico richiesto' }}</button>
+						</h2>
+					</div>
+
+					<div id="collapseMedico" [ngbCollapse]="!isCollapsedMedico">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="fa fa-user-md" style="font-size: 60px"></i>
+								</div>
+								<div class="col">
+									<div class="row">
+										<div class="col">
+											<b>Nome</b>
+										</div>
+										<div class="col">
+											<b>Cognome</b>
+										</div>
+										<div class="col">
+											<b>Tipologia</b>
+										</div>
+										<div class="col">
+											<b *ngIf="this.dettaglio.stato != 'Domanda di revoca'">Richiesto fino al</b>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.nome ? dettaglio.dati_medico_richiesto.nome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.cognome ? dettaglio.dati_medico_richiesto.cognome : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.tipologia ? dettaglio.dati_medico_richiesto.tipologia : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.stato != 'Domanda di revoca' ? dettaglio.dati_medico_richiesto.richiesto_fino ? dettaglio.dati_medico_richiesto.richiesto_fino : '-' : '' }}</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<b>ASL</b>
+										</div>
+										<div class="col">
+											<b>Distretto</b>
+										</div>
+										<div class="col">
+											<b>Ambito</b>
+										</div>
+										<div class="col"></div>
+									</div>
+									<div class="row">
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.asl ? dettaglio.dati_medico_richiesto.asl : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.distretto ? dettaglio.dati_medico_richiesto.distretto : '-' }}</div>
+										<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.ambito ? dettaglio.dati_medico_richiesto.ambito : '-' }}</div>
+										<div class="col text-uppercase" ></div>
+									</div>
+									<div *ngIf="this.dettaglio.stato != 'Domanda di revoca'">
+										<div class="row">
+											<div class="col">
+												<b>Massimale</b>
+											</div>
+											<div class="col">
+												<b>Autolimitato</b>
+											</div>
+											<div class="col"></div>
+											<div class="col"></div>
+										</div>
+										<div class="row">
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.massimale ? dettaglio.dati_medico_richiesto.massimale : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.autolimitato != null ? dettaglio.dati_medico_richiesto.autolimitato == 'true' ? 'SI' : 'NO' : '-'}}</div>
+											<!-- <div class="col" >{{dettaglio.dati_medico_richiesto.autolimitato ? dettaglio.dati_medico_richiesto.autolimitato : '-' }}</div> -->
+											<div class="col" ></div>
+											<div class="col" ></div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<b>Massimale in deroga</b>
+											</div>
+											<div class="col">
+												<b>Massimale scelte temp.</b>
+											</div>
+											<div class="col">
+												<b>Massimale riservato fascia et&agrave; 0-6</b>
+											</div>
+											<div class="col"></div>
+										</div>
+										<div class="row">
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.massimale_deroga ? dettaglio.dati_medico_richiesto.massimale_deroga : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.massimale_scelte_temp ? dettaglio.dati_medico_richiesto.massimale_scelte_temp : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.massimale_ris_fascia ? dettaglio.dati_medico_richiesto.massimale_ris_fascia : '-' }}</div>
+											<div class="col" ></div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<b>Assistiti netti</b>
+											</div>
+											<div class="col">
+												<b>di cui 0-6</b>
+											</div>
+											<div class="col">
+												<b>Assistiti lordi</b>
+											</div>
+											<div class="col"></div>
+										</div>
+										<div class="row">
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.assistiti_netti ? dettaglio.dati_medico_richiesto.assistiti_netti : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.ass_06 ? dettaglio.dati_medico_richiesto.ass_06 : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.assistiti_lordi ? dettaglio.dati_medico_richiesto.assistiti_lordi : '-' }}</div>
+											<div class="col" ></div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<b>Disponibilit&agrave; piena</b>
+											</div>
+											<div class="col">
+												<b>Disponibilit&agrave; per ricong.</b>
+											</div>
+											<div class="col">
+												<b>Disponibilit&agrave; temp.</b>
+											</div>
+											<div class="col" style="visibility: hidden;">
+												<b>Disponibilit&agrave; 0-6</b>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.dispo_piena ? dettaglio.dati_medico_richiesto.dispo_piena : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.disp_ric ? dettaglio.dati_medico_richiesto.disp_ric : '-' }}</div>
+											<div class="col text-uppercase" >{{dettaglio.dati_medico_richiesto.dispo_temp ? dettaglio.dati_medico_richiesto.dispo_temp : '-' }}</div>
+											<div class="col text-uppercase" style="visibility: hidden;">{{dettaglio.dati_medico_richiesto.dispo_06 ? dettaglio.dati_medico_richiesto.dispo_06 : '-' }}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="alert alert-info" role="alert">
+					<div class="row">
+						<div class="col-md-6">
+							Tipologia profilo *
+							<div class="input-group mb-3">
+								<select [(ngModel)]="tipologia" class="custom-select" id="inputGroupSelect01" 
+								[disabled]="this.dettaglio.tipologieProfilo.length == 1 || this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'" >
+									<option *ngFor="let tipologiaP of dettaglio.tipologieProfilo"
+										[selected]="tipologiaP.codTipologia == tipologia"
+										value="{{tipologiaP.codTipologia}}">{{tipologiaP.descTipologia}} </option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							Durata assistenza *
+							<form class="form-inline">
+								<!-- <div class="form-group hidden">
+									<div class="input-group">
+										<input name="datepicker" class="form-control" ngbDatepicker
+											#datepicker="ngbDatepicker" [autoClose]="'outside'"
+											(dateSelect)="onDateSelection($event)" [displayMonths]="2"
+											[dayTemplate]="t" outsideDays="hidden"
+											[startDate]="fromDate!">
+										<ng-template #t let-date let-focused="focused">
+										<span class="custom-day" [class.focused]="focused"
+											[class.range]="isRange(date)"
+											[class.faded]="isHovered(date) || isInside(date)"
+											(mouseenter)="hoveredDate = date"
+											(mouseleave)="hoveredDate = null"> {{ date.day }} </span> </ng-template>
+									</div>
+								</div> -->
+								<div class="form-group ml-2">
+									<label for="dataDa">Da: </label>
+									<div class="input-group ml-2">
+										<input id="data_inizio" [(ngModel)]="fromDate" class="form-control" readOnly [value]="data_inizio"
+											name="dpFromDate" placeholder="{{data_inizio_place != null ? data_inizio_place : currentDate | date:'dd/MM/yyyy' }}">
+									</div>
+									<!-- <div class="input-group">
+										<input id="data_inizio" [(ngModel)]="fromDate" #dpFromDate="ngbDatepicker" class="form-control"
+											ngbDatepicker
+											[readOnly]="this.dettaglio.dataInizioAss != null"
+											[placeholder]="data_inizio_place != null ? data_inizio_place : 'gg/mm/aaaa'" name="dpFromDate"
+											[value]="data_inizio"
+											[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+											autocomplete="off"
+											(dateSelect)="onDateSelectionFrom($event)">
+										<div class="input-group-append">
+											<button class="btn btn-outline-secondary calendar"
+												[disabled]="this.dettaglio.dataInizioAss != null"
+												(click)="dpFromDate.toggle()" type="button"
+												[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</div>
+									</div> -->
+								</div>
+								<div class="form-group ml-2">
+									<label for="dataA">A: </label>
+									<div id="dataA" class="input-group ml-2">
+										<input id="data_fine" [(ngModel)]="toDate" #dpToDate="ngbDatepicker" class="form-control" 
+											[placeholder]="data_fine_place != null ? data_fine_place : 'gg/mm/aaaa'"
+											ngbDatepicker
+											[readOnly]="this.dettaglio.dataFineAss != null || this.dettaglio.dataInizioAss != null"
+										    name="dpToDate" [value]="data_fine"
+											autocomplete="off"
+											(dateSelect)="onDateSelectionTo($event)"	
+											(blur)="onDateWritten($event.value)"
+											[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'">
+										<div class="input-group-append">
+											<button class="btn btn-outline-secondary calendar"
+												[disabled]="this.dettaglio.dataFineAss != null || this.dettaglio.dataInizioAss != null"
+												(click)="dpToDate.toggle()" type="button"
+												[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="pediatra" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									[checked] = "dettaglio.deroghe.derogaPediatra"
+									id="customCheck1"> <label class="custom-control-label"
+									for="customCheck1">Deroga pediatra</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="medico_generico" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									id="customCheck2"> <label class="custom-control-label"
+									for="customCheck2">Medico generico</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="familiare" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									id="customCheck3"> <label class="custom-control-label"
+									for="customCheck3">Ricongiungimento familiare</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="territoriale" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									id="customCheck4"> <label class="custom-control-label"
+									for="customCheck4">Deroga territoriale</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)] = "associazione" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									id="customCheck5"> <label class="custom-control-label"
+									for="customCheck5">Deroga associazione</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="massimale" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									id="customCheck6"> <label class="custom-control-label"
+									for="customCheck6">Deroga massimale</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="massimale_temp" type="checkbox" class="custom-control-input"
+								[disabled]="this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									id="customCheck7"> <label class="custom-control-label"
+									for="customCheck7">Deroga massimale temp.</label>
+							</div>
+						</div>
+						<div class="col-md-3"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="custom-control custom-checkbox">
+								<input [(ngModel)]="flMedicoRevocato" type="checkbox" class="custom-control-input"
+									   [disabled] = "dettaglio.dati_medico_extra === null || this.dettaglio.stato == 'Chiusa' || this.dettaglio.stato == 'Domanda di revoca'"
+									   (change)="toggleRevocaMedico($event)"
+									id="customCheck8"> <label class="custom-control-label"
+									for="customCheck8">Il medico &egrave; stato revocato</label>
+							</div>
+						</div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+					</div>
+				</div>
+
+
+				<div class="row" style="margin-bottom: 15px">
+
+					<ng-template #content let-c="close" let-d="dismiss">
+					<div class="modal-header">
+						<h4 id="titolo" style="color: black; font-family: Roboto;"
+							class="modal-title">RICHIEDI RETTIFICA</h4>
+						<button style="outline: none;" type="button" class="close" aria-label="Close"
+							(click)="d('Cross click')">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h5 id="domanda" style="color: black; font-family: Roboto;"
+							class="modal-title">Sei sicuro di voler richiedere una
+							rettifica?</h5>
+						<p id="avviso"
+							style="color: black; font-family: Roboto; font-size: 15px;"
+							class="modal-title">Se richiedi la rettifica di una richiesta
+							devi indicare una motivazione</p>
+						<div class="row d-flex justify-content-left align-items-left">
+							<p id="motivazioneText"
+								style="color: black; font-family: Roboto; font-size: 15px; margin-top: 15px;"
+								class="modal-title">Motivazione</p>
+							<div class="input-group mb-3">
+								<select [(ngModel)]="motivazione" class="custom-select" id="motivazioneSelect">
+									<option *ngFor="let motivazione of listaMotivazioni"
+										value="{{motivazione.codMotivazione}}">{{motivazione.descMotivazione}} </option>
+								</select>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-left align-items-left">
+							<p id="notaRichiedenteText"
+								style="color: black; font-family: Roboto; font-size: 15px; margin-top: 15px;"
+								class="modal-title">Nota per il richiedente</p>
+							<textarea id="notaRichiedenteArea" class="form-control col-xs-12" [(ngModel)]="nota_assistito"></textarea>
+						</div>
+						<div class="row d-flex justify-content-left align-items-left">
+							<p id="notaInternaText"
+								style="color: black; font-family: Roboto; font-size: 15px; margin-top: 15px;"
+								class="modal-title">Nota interna</p>
+							<textarea class="form-control col-xs-12" [(ngModel)]="nota"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="btnSiSalva" type="button" class="btn btn-success"
+							(click)="SiSalva(sceltaDiModal)">
+							<h6 id="si">Si</h6>
+						</button>
+						<button type="button" class="btn btn-danger"
+							(click)="d('Cross click')">
+							<h6 id="no">No</h6>
+						</button>
+					</div>
+					</ng-template>
+
+					<div class="col-auto">
+						<button id="stampa" type="button" class="btn btn-dark"
+							(click)="stampaPratica()">Stampa
+							</button>
+					</div>
+					<div class="col-auto">
+						<button id="notaInterna" type="button" class="btn btn-dark" *ngIf="dettaglio.stato != 'Bozza' && dettaglio.stato != 'Annullata' && dettaglio.stato != 'In revisione' && dettaglio.stato != 'Respinta' && dettaglio.stato != 'Chiusa'"
+							(click)="open(content, 'INTERNA')"
+							[disabled]="(dettaglio.cfInCarico != client.userInfo.codFisc) || this.dettaglio.stato == 'Inviata'">
+							Aggiungi Nota Interna</button>
+					</div>
+					<div class="col-auto">
+						<button id="rettifica" type="button" class="btn btn-danger" *ngIf="dettaglio.stato != 'Bozza' && dettaglio.stato != 'Annullata' && dettaglio.stato != 'In revisione' && dettaglio.stato != 'Respinta' && dettaglio.stato != 'Chiusa' && dettaglio.stato != 'Completata'"
+							(click)="open(content, 'RETTIFICA')"
+							[disabled]="(client.dettaglio.allegati == null || client.dettaglio.allegati.length == 0) || (dettaglio.cfInCarico != client.userInfo.codFisc) || this.dettaglio.stato == 'Inviata'">
+							Richiedi rettifica</button>
+					</div>
+					<div class="col-auto">
+						<button id="respingi" type="button" class="btn btn-danger"  *ngIf="dettaglio.stato != 'Bozza' && dettaglio.stato != 'Annullata' && dettaglio.stato != 'In revisione' && dettaglio.stato != 'Respinta' && dettaglio.stato != 'Chiusa' && dettaglio.stato != 'Completata'"
+							(click)="open(content, 'RESPINGI')"
+							[disabled]="(dettaglio.cfInCarico != client.userInfo.codFisc) || this.dettaglio.stato == 'Inviata'">
+							Respingi</button>
+					</div>
+					<div class="col-auto">
+						<button id="chiude" type="button" class="btn btn-primary"  *ngIf="dettaglio.stato === 'Completata'"
+							(click)="open(content, 'CHIUDE')"
+							[disabled]="(dettaglio.cfInCarico != client.userInfo.codFisc)">
+							Chiude richiesta</button>
+					</div>
+					<div class="col"></div>
+					<div class="col-auto">
+						<button id="accetta" type="button" class="btn btn-primary"  *ngIf="dettaglio.stato != 'Bozza' && dettaglio.stato != 'Annullata' && dettaglio.stato != 'In revisione' && dettaglio.stato != 'Respinta' && dettaglio.stato != 'Chiusa' && dettaglio.stato != 'Completata'"
+							(click)="open(content, 'ACCETTA')"
+							[disabled]="(dettaglio.cfInCarico != client.userInfo.codFisc) || this.dettaglio.stato == 'Inviata'">
+							Accetta richiesta</button>
+					</div>
+					<!-- <div class="col"></div>
+					<div class="col-auto">
+						<button id="scaricaAllegati" type="button" class="btn btn-primary"
+							(click)="consultaDocumentazione()" disabled>Scarica
+							allegati</button>
+					</div> -->
+				</div>
+				<br>
+				<small class="text-muted">
+					<p style="padding: 0 20px;">Il servizio è stato realizzato nel rispetto del D.P.R. 445/2000 art.46 “Dichiarazioni sostitutive di certificazioni�? e art. 47 “Dichiarazioni sostitutive dell'atto di notorietà�?. Le informazioni autocertificate e/o allegate sono esaustive rispetto alla casistica del richiedente.</p>
+					<p style="padding: 0 20px;">Si ricorda che la mancata accettazione delle dichiarazioni fornite dal cittadino costituisce violazione dei doveri d'ufficio e che i controlli su quanto dichiarato sono a carico delle amministrazioni procedenti secondo gli art.71 e 74 del medesimo D.P.R. </p>
+				</small>
+				<br>
+				<div class="card" style="margin-bottom: 15px;">
+					<div class="card-header" id="headingTree">
+						<h2 class="mb-0">
+							<button class="btn btn-link" type="button"
+								(click)="isCollapsedCronologia = !isCollapsedCronologia"
+								[attr.aria-expanded]="!isCollapsedCronologia"
+								aria-controls="collapseExample">Cronologia</button>
+						</h2>
+					</div>
+
+					<div id="collapseCronologia" [ngbCollapse]="!isCollapsedCronologia">
+						<div class="card-body">
+
+							<router-outlet></router-outlet>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>

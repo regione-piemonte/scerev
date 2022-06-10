@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final utlizzo versione della libreria JasperReports6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DettagliPratica" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ee377c77-13cf-4cf1-b34b-a2144b1b7cce">
+	<property name="ireport.zoom" value="2.357947691000002"/>
+	<property name="ireport.x" value="34"/>
+	<property name="ireport.y" value="1370"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="NOME_COGNOME" class="java.lang.String"/>
+	<parameter name="DATA_NASCITA" class="java.lang.String"/>
+	<parameter name="LUOGO_NASCITA" class="java.lang.String"/>
+	<parameter name="RESIDENZA" class="java.lang.String"/>
+	<parameter name="DOMICILIO" class="java.lang.String"/>
+	<parameter name="DATA_ODIERNA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MESSAGGIO_1" class="java.lang.String"/>
+	<parameter name="MESSAGGIO_2" class="java.lang.String"/>
+	<parameter name="MOTIVAZIONE_DOMICILIO" class="java.lang.String"/>
+	<parameter name="LAVORO_PROFESSIONE" class="java.lang.String"/>
+	<parameter name="LAVORO_PIVA" class="java.lang.String"/>
+	<parameter name="LAVORO_N_ISCRIZIONE" class="java.lang.String"/>
+	<parameter name="LAVORO_AZIENDA" class="java.lang.String"/>
+	<parameter name="LAVORO_TELEFONO_AZIENDA" class="java.lang.String"/>
+	<parameter name="LAVORO_INDIRIZZO_AZIENDA" class="java.lang.String"/>
+	<parameter name="LAVORO_DATA_FINE_CONTRATTO" class="java.lang.String"/>
+	<parameter name="LAVORO_COMUNE_AZIENDA" class="java.lang.String"/>
+	<parameter name="STUDIO_ISTITUTO" class="java.lang.String"/>
+	<parameter name="STUDIO_INDIRIZZO" class="java.lang.String"/>
+	<parameter name="STUDIO_COMUNE" class="java.lang.String"/>
+	<parameter name="STUDIO_DATA_FINE_ISCRIZIONE" class="java.lang.String"/>
+	<parameter name="FAMILIARE_NOME_COGNOME" class="java.lang.String"/>
+	<parameter name="FAMILIARE_CODICE_FISCALE" class="java.lang.String"/>
+	<parameter name="FAMILIARE_GRADO_PARENTELA" class="java.lang.String"/>
+	<parameter name="IS_ASSISTENZA_FUORI_REGIONE" class="java.lang.String"/>
+	<parameter name="EXTRA_REGIONE_ASL" class="java.lang.String"/>
+	<parameter name="EXTRA_REGIONE_NOME_REGIONE" class="java.lang.String"/>
+	<parameter name="EXTRA_REGIONE_MEDICO" class="java.lang.String"/>
+	<parameter name="MOTIVAZIONE_SOGGIORNO" class="java.lang.String"/>
+	<parameter name="NOME_COGNOME_MEDICO" class="java.lang.String"/>
+	<parameter name="ASL_ASSISTENZA" class="java.lang.String"/>
+	<parameter name="DATA_FINE_ASSISTENZA_TEMPORANEA" class="java.lang.String"/>
+	<parameter name="IS_ASSISTENZA_TEMPORANEA" class="java.lang.String"/>
+	<parameter name="IS_ASS_PERM_DEROGA_X_RICONGIUNGIMENTO" class="java.lang.String"/>
+	<parameter name="MESSAGGIO_3" class="java.lang.String"/>
+	<parameter name="FAMILIARE_NOME_COGNOME_PERMANENTE" class="java.lang.String"/>
+	<parameter name="FAMILIARE_GRADO_PARENTELA_PERMANENTE" class="java.lang.String"/>
+	<parameter name="FAMILIARE_CODICE_FISCALE_PERMANENTE" class="java.lang.String"/>
+	<parameter name="CODICE_FISCALE" class="java.lang.String"/>
+	<parameter name="STUDIO_PROVINCIA" class="java.lang.String"/>
+	<parameter name="NOME_COGNOME_DELEGATO" class="java.lang.String"/>
+	<parameter name="MOTIVAZIONE_DOMANDA" class="java.lang.String"/>
+	<variable name="data" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="orario" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("HH:mm").format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<image scaleImage="RealSize" onErrorType="Blank">
+				<reportElement x="417" y="48" width="121" height="37" uuid="1637f313-acf0-4601-85ee-75e323b4c8fe"/>
+				<imageExpression><![CDATA["report//Header.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="50" y="44" width="320" height="45" uuid="b22ffeed-2503-4b98-bcb3-636302925407"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Il mio medico]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="201" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="2" width="490" height="30" uuid="aa6e905f-3f3e-4d9c-b51a-775455850726"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MESSAGGIO_1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="41" width="250" height="15" uuid="9ef818fe-9dda-4e1b-b961-a08b9b726400">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Il sottoscritto: " + "<style isBold='true'>" + (($P{NOME_COGNOME_DELEGATO}==null) ?  "-" : $P{NOME_COGNOME_DELEGATO}) + "</style>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="360" y="71" width="180" height="15" uuid="12224ed1-fb2e-482b-bbfc-fa6cabbf9f5a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["nato il: " + "<style isBold='true'>" + (($P{DATA_NASCITA}==null) ?  "-" :$P{DATA_NASCITA}) + "</style>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="360" y="41" width="180" height="15" uuid="36bf6675-c30b-44ce-a38f-53cbe843d359">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Codice fiscale: " + "<style isBold='true'>" + (($P{CODICE_FISCALE}==null) ?  "-" : $P{CODICE_FISCALE}) + "</style>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="360" y="86" width="180" height="15" uuid="833c49c9-85a9-4de2-87d3-e82f1f476a01"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["a: " + "<style isBold='true'>" + (($P{LUOGO_NASCITA}==null) ? "-" : $P{LUOGO_NASCITA}) + "</style>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="112" width="490" height="52" uuid="f3564c69-f5be-4560-bc14-fabb663fedc0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{MESSAGGIO_2}==null) ? "-" : $P{MESSAGGIO_2}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" mode="Transparent" x="50" y="173" width="490" height="27" forecolor="#0473B8" backcolor="rgba(255, 255, 255, 0.0)" uuid="acce6384-56b0-4a9f-bdc4-7c864adcc476">
+					<property name="com.jaspersoft.studio.layout"/>
+				</reportElement>
+				<box topPadding="10" bottomPadding="20">
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#0473B8"/>
+				</box>
+				<staticText>
+					<reportElement x="16" y="2" width="214" height="20" uuid="49128ac7-7b34-4d64-a4ff-36c0b58e698b">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DICHIARA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="30" y="75" width="420" height="30" isRemoveLineWhenBlank="true" uuid="4acb089c-abcf-48c7-8900-0bc5a5657360">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO} != null]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Top" markup="styled">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["per la seguente motivazione: " + "<style isBold='true'>" + (($P{MOTIVAZIONE_DOMICILIO}==null) ? "-" : $P{MOTIVAZIONE_DOMICILIO}) + "</style>" + (($P{FAMILIARE_CODICE_FISCALE}==null) ? $P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" ) ? " presso: " : $P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) ? $P{LAVORO_AZIENDA} != null ? " presso l'azienda: " : "" : ""  : " con: ")]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="100" y="109" width="350" height="15" isRemoveLineWhenBlank="true" uuid="c305d7d6-0b0b-4c4b-a0c8-37661be255ac">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{FAMILIARE_CODICE_FISCALE}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Parente: " + (($P{FAMILIARE_NOME_COGNOME}==null) ? "-" : $P{FAMILIARE_NOME_COGNOME})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="100" y="124" width="350" height="15" isRemoveLineWhenBlank="true" uuid="6b2084bc-8c2b-4c16-9374-78031201ff26">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{FAMILIARE_CODICE_FISCALE}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Codice fiscale: " + (($P{FAMILIARE_CODICE_FISCALE}==null) ? "-" : $P{FAMILIARE_CODICE_FISCALE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="100" y="139" width="350" height="15" isRemoveLineWhenBlank="true" uuid="f4f4b5b9-f875-4c3d-86b4-e83dd77aab03">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{FAMILIARE_CODICE_FISCALE}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Grado parentela: " + (($P{FAMILIARE_GRADO_PARENTELA}==null) ? "-" : $P{FAMILIARE_GRADO_PARENTELA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="100" y="154" width="160" height="15" isRemoveLineWhenBlank="true" uuid="2dd09a9f-3224-4335-bd26-78d87f3f1cfa">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Istituto: " + (($P{STUDIO_ISTITUTO}==null) ? "-" : $P{STUDIO_ISTITUTO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="100" y="169" width="160" height="15" isRemoveLineWhenBlank="true" uuid="68bd0eab-0d86-4a92-b9f2-05196aeb0a24">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Indirizzo: " + (($P{STUDIO_INDIRIZZO}==null) ? "-" : $P{STUDIO_INDIRIZZO})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="100" y="184" width="160" height="15" isRemoveLineWhenBlank="true" uuid="116d7fb4-46c7-469c-a93d-82a1426c7ba0">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Provincia: " + (($P{STUDIO_PROVINCIA}==null) ? "-" : $P{STUDIO_PROVINCIA})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="280" y="184" width="170" height="15" isRemoveLineWhenBlank="true" uuid="7afcb5ec-e527-4cc9-9f22-516638fb88d0">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Data fine iscrizione: " + (($P{STUDIO_DATA_FINE_ISCRIZIONE}==null) ? "-" : $P{STUDIO_DATA_FINE_ISCRIZIONE})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="280" y="169" width="170" height="15" isRemoveLineWhenBlank="true" uuid="29897309-afeb-4a33-b55a-c355dd8c057c">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Comune: " + (($P{STUDIO_COMUNE}==null) ? "-" : $P{STUDIO_COMUNE})]]></textFieldExpression>
+				</textField>
+				<image scaleImage="RealSize" onErrorType="Blank">
+					<reportElement positionType="Float" x="39" y="109" width="40" height="40" isRemoveLineWhenBlank="true" uuid="0937fe4e-de71-4026-ae13-12a005015920">
+						<printWhenExpression><![CDATA[$P{FAMILIARE_CODICE_FISCALE}!=null]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["report//Parente-Icon.jpg"]]></imageExpression>
+				</image>
+				<image scaleImage="RealSize" onErrorType="Blank">
+					<reportElement positionType="Float" x="39" y="154" width="40" height="40" isRemoveLineWhenBlank="true" uuid="a71dec28-c968-4b73-b720-ed94132af1d8">
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "STUDIO" )]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["report//Studio-Icon.jpg"]]></imageExpression>
+				</image>
+				<image scaleImage="RealSize" onErrorType="Blank">
+					<reportElement positionType="Float" x="39" y="199" width="40" height="40" isRemoveLineWhenBlank="true" uuid="6f73769e-bdf5-4cd4-8306-9e22d543a379">
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" )]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["report//Lavoro-Icon.jpg"]]></imageExpression>
+				</image>
+				<frame>
+					<reportElement x="17" y="27" width="433" height="15" isRemoveLineWhenBlank="true" uuid="596f8202-85f7-46ad-b247-22ac9bd09619"/>
+					<ellipse>
+						<reportElement x="0" y="5" width="6" height="6" forecolor="#66CFF6" backcolor="#66CFF6" uuid="9e7a30a7-7466-40e0-b2b9-26aee3cf3e44"/>
+					</ellipse>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="0" width="420" height="15" isRemoveLineWhenBlank="true" uuid="039c75fb-56dd-417f-b311-99da8de292b8">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+							<paragraph lineSpacing="Single"/>
+						</textElement>
+						<textFieldExpression><![CDATA["che il minore è residente in: " + "<style isBold='true'>" + (($P{RESIDENZA}==null) ?  "-" : $P{RESIDENZA}) + "</style>"]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="17" y="52" width="433" height="15" isRemoveLineWhenBlank="true" uuid="8ab8bada-22de-4e47-8801-f362fe36a417"/>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="0" width="420" height="15" uuid="48bb6287-cc0e-4c21-abd2-dbfee7763fa2">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["che il minore è domiciliato in: " + "<style isBold='true'>" + (($P{DOMICILIO}==null) ? "-" : $P{DOMICILIO}) + "</style>"]]></textFieldExpression>
+					</textField>
+					<ellipse>
+						<reportElement x="0" y="5" width="6" height="6" forecolor="#66CFF6" backcolor="#66CFF6" uuid="f50e58d5-e0f2-459e-9365-203f20f7bcc7"/>
+					</ellipse>
+				</frame>
+				<frame>
+					<reportElement x="17" y="284" width="433" height="10" isRemoveLineWhenBlank="true" uuid="c5295b0a-2dc3-424c-89c1-c3c3823e0b1e"/>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="-5" width="420" height="15" isRemoveLineWhenBlank="true" uuid="111d9a40-1acc-44fb-9b58-73cb202afe1d">
+							<printWhenExpression><![CDATA[($P{MOTIVAZIONE_SOGGIORNO}!=null)]]></printWhenExpression>
+						</reportElement>
+						<textElement verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["che la motivazione del soggiorno è: " + "<style isBold='true'>" + (($P{MOTIVAZIONE_SOGGIORNO}==null) ? "-" : $P{MOTIVAZIONE_SOGGIORNO}) + "</style>"]]></textFieldExpression>
+					</textField>
+					<ellipse>
+						<reportElement positionType="Float" x="0" y="1" width="6" height="6" isRemoveLineWhenBlank="true" forecolor="#66CFF6" backcolor="#66CFF6" uuid="2b078bd5-f33d-485c-8324-fe5945f948cb">
+							<printWhenExpression><![CDATA[($P{MOTIVAZIONE_SOGGIORNO}!=null)]]></printWhenExpression>
+						</reportElement>
+					</ellipse>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="17" y="299" width="433" height="10" isRemoveLineWhenBlank="true" uuid="7213d0e3-7216-4c0d-a78b-1d93a760a1a7"/>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="-5" width="420" height="15" isRemoveLineWhenBlank="true" uuid="1b77638b-734e-4ddc-8ba3-76c87928c802">
+							<printWhenExpression><![CDATA[($P{MOTIVAZIONE_DOMANDA}!=null)]]></printWhenExpression>
+						</reportElement>
+						<textElement verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["che la motivazione della deroga territoriale è: " + "<style isBold='true'>" + (($P{MOTIVAZIONE_DOMANDA}==null) ? "-" : $P{MOTIVAZIONE_DOMANDA}) + "</style>"]]></textFieldExpression>
+					</textField>
+					<ellipse>
+						<reportElement positionType="Float" x="0" y="1" width="6" height="6" isRemoveLineWhenBlank="true" forecolor="#66CFF6" backcolor="#66CFF6" uuid="3bd6f6cd-847e-4ab6-90b6-c572641b6e2b">
+							<printWhenExpression><![CDATA[($P{MOTIVAZIONE_DOMANDA}!=null)]]></printWhenExpression>
+						</reportElement>
+					</ellipse>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="17" y="318" width="433" height="70" uuid="e67ac51e-8f04-4d0a-a16d-0850afb3617a"/>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="-5" width="420" height="15" isRemoveLineWhenBlank="true" uuid="dbd8b35f-cd01-4edf-9b67-ad1e82877d34">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["di scegliere per il minore come medico di famiglia: "]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="83" y="25" width="350" height="15" isRemoveLineWhenBlank="true" uuid="132b9b0a-57de-487e-bc0a-7dc27f9505a9">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<textElement verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["<style isBold='true'>" + (($P{NOME_COGNOME_MEDICO}==null) ? "-" : $P{NOME_COGNOME_MEDICO}) + "</style>" + " presso l'ASL " + (($P{ASL_ASSISTENZA}==null) ? "-" : $P{ASL_ASSISTENZA})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="83" y="40" width="350" height="15" uuid="16c7a789-eca7-48fa-9f46-0eddcce14b63">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{IS_ASSISTENZA_TEMPORANEA}.equals( "true" )]]></printWhenExpression>
+						</reportElement>
+						<textElement verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["fino al " + (($P{DATA_FINE_ASSISTENZA_TEMPORANEA}==null) ? "-" : $P{DATA_FINE_ASSISTENZA_TEMPORANEA})]]></textFieldExpression>
+					</textField>
+					<ellipse>
+						<reportElement positionType="Float" x="0" y="0" width="6" height="6" forecolor="#66CFF6" backcolor="#66CFF6" uuid="23d4973f-dc46-40e5-a1cf-a5102b3c216b"/>
+					</ellipse>
+					<image scaleImage="RealSize" onErrorType="Blank">
+						<reportElement positionType="Float" x="22" y="20" width="40" height="40" uuid="028248ac-5c01-48f1-9986-5bee679c2c4f"/>
+						<imageExpression><![CDATA["report//Medico-Icon.jpg"]]></imageExpression>
+					</image>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="17" y="394" width="433" height="30" isRemoveLineWhenBlank="true" uuid="0390a532-abd7-49e1-a1ed-0dfd2e383226">
+						<printWhenExpression><![CDATA[$P{IS_ASSISTENZA_FUORI_REGIONE}.equals( "true" )]]></printWhenExpression>
+					</reportElement>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="-5" width="420" height="15" isRemoveLineWhenBlank="true" uuid="aa899f3f-6f5b-4b29-8201-ed3cd174647f">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{IS_ASSISTENZA_FUORI_REGIONE}.equals( "true" )]]></printWhenExpression>
+						</reportElement>
+						<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["che il minore è attualmente assistito presso l’ASL: " + "<style isBold='true'>" + (($P{EXTRA_REGIONE_ASL}==null) ? "-" : $P{EXTRA_REGIONE_ASL}) + "</style>" + " della Regione: " + "<style isBold='true'>" +(($P{EXTRA_REGIONE_NOME_REGIONE}==null) ? "-" : $P{EXTRA_REGIONE_NOME_REGIONE}) + "</style>"]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="13" y="10" width="420" height="15" isRemoveLineWhenBlank="true" uuid="c4b5d00f-1a0e-4e22-9576-3f33d224755a">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{IS_ASSISTENZA_FUORI_REGIONE}.equals( "true" )]]></printWhenExpression>
+						</reportElement>
+						<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["dal medico dott: " + "<style isBold='true'>" + (($P{EXTRA_REGIONE_MEDICO}==null) ? "-" : $P{EXTRA_REGIONE_MEDICO}) + "</style>"]]></textFieldExpression>
+					</textField>
+					<ellipse>
+						<reportElement positionType="Float" x="0" y="1" width="6" height="6" isRemoveLineWhenBlank="true" forecolor="#66CFF6" backcolor="#66CFF6" uuid="bc90a374-580e-4b40-a610-561cf550c1d8">
+							<printWhenExpression><![CDATA[$P{IS_ASSISTENZA_FUORI_REGIONE}.equals( "true" )]]></printWhenExpression>
+						</reportElement>
+					</ellipse>
+				</frame>
+				<frame>
+					<reportElement x="100" y="199" width="350" height="45" isRemoveLineWhenBlank="true" uuid="30cded93-3b35-433d-80e9-e9ab5c73fd10">
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_AZIENDA} != null]]></printWhenExpression>
+					</reportElement>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="0" width="160" height="15" isRemoveLineWhenBlank="true" uuid="4ab1ec85-f427-4a90-8333-6cbb6d0555ff">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_AZIENDA} != null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Nome: " + (($P{LAVORO_AZIENDA}==null) ? "-" : $P{LAVORO_AZIENDA})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="15" width="160" height="15" isRemoveLineWhenBlank="true" uuid="dc80ff91-3a06-4fe3-8fb4-c9fee6b47a77">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_TELEFONO_AZIENDA}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Telefono: " + (($P{LAVORO_TELEFONO_AZIENDA}==null) ? "-" : $P{LAVORO_TELEFONO_AZIENDA})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="180" y="15" width="170" height="15" isRemoveLineWhenBlank="true" uuid="34189d93-1b1c-4a2d-888d-27d9e74efe65">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_INDIRIZZO_AZIENDA}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Indirizzo: " + (($P{LAVORO_INDIRIZZO_AZIENDA}==null) ? "-" : $P{LAVORO_INDIRIZZO_AZIENDA})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="30" width="160" height="15" isRemoveLineWhenBlank="true" uuid="4c309dc4-7444-4993-96d7-f529c51442a8">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_COMUNE_AZIENDA}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Comune: " + (($P{LAVORO_COMUNE_AZIENDA}==null) ? "-" : $P{LAVORO_COMUNE_AZIENDA})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="180" y="30" width="170" height="15" isRemoveLineWhenBlank="true" uuid="31c835a2-7660-4c7e-92ca-f440aeda5c49">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_DATA_FINE_CONTRATTO}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Data fine contratto: " + (($P{LAVORO_DATA_FINE_CONTRATTO}==null || $P{LAVORO_DATA_FINE_CONTRATTO}.isEmpty()) ? "-" : $P{LAVORO_DATA_FINE_CONTRATTO})]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="100" y="244" width="350" height="30" isRemoveLineWhenBlank="true" uuid="64747bc6-c80e-4e47-8ca3-93ceea1a78ce">
+						<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_PROFESSIONE}!=null]]></printWhenExpression>
+					</reportElement>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="0" width="160" height="15" isRemoveLineWhenBlank="true" uuid="7475209c-d906-46f2-b948-1d0b7a55ca1f">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_PROFESSIONE}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Professione: " + (($P{LAVORO_PROFESSIONE}==null) ? "-" : $P{LAVORO_PROFESSIONE})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="180" y="15" width="170" height="15" isRemoveLineWhenBlank="true" uuid="93b614b4-5f43-4e79-95c3-50e9ae3453df">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_PIVA}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Partita IVA: " + (($P{LAVORO_PIVA}==null) ? "-" : $P{LAVORO_PIVA})]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="0" y="15" width="160" height="15" isRemoveLineWhenBlank="true" uuid="183dcf82-ee3b-42e8-bbaf-16cf26f94b8b">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<printWhenExpression><![CDATA[$P{MOTIVAZIONE_DOMICILIO}.equalsIgnoreCase( "LAVORO" ) && $P{LAVORO_N_ISCRIZIONE}!=null]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Numero Iscrizione: " + (($P{LAVORO_N_ISCRIZIONE}==null) ? "-" : $P{LAVORO_N_ISCRIZIONE})]]></textFieldExpression>
+					</textField>
+				</frame>
+			</frame>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="56" width="490" height="15" uuid="5f6badbd-800b-4bca-95b6-60b890a0584e">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["presenta domanda di scelta del medico di famiglia per il minore: "]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="71" width="250" height="15" uuid="54ad01cf-1ff7-4f4d-a4ce-36dd0a8f0584">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nome e cognome assistito: " + "<style isBold='true'>" + (($P{NOME_COGNOME}==null) ?  "-" : $P{NOME_COGNOME}) + "</style>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="40">
+			<textField>
+				<reportElement x="93" y="-8" width="100" height="20" uuid="c0c0dd91-2109-4668-ad60-da2830aeb789">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_ODIERNA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="51" y="-8" width="40" height="20" uuid="1bed382e-0104-433d-afc4-47a9932bf710"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="-8" width="238" height="20" uuid="898cb061-01fd-4618-a3bf-2db47a4878cd">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Firma: ________________________]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>
