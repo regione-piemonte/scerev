@@ -1,30 +1,30 @@
 name@version *,license *,copyrights *,end-of-support,dependencies,language,repository,email,URL
-axis-1.4.jar,Apache 2.0,-,-,-,Java,-,-,-,
-axis-jaxrpc-1.4.jar,Apache 2.0,-,-,-,Java,-,-,-,
-batik-css-1.7.jar,Apache 2.0,-,-,-,Java,-,-,-,
-bsh-2.0b4.jar,Apache 2.0,-,-,-,Java,-,-,-,
-commons-beanutils-1.9.1.jar,Apache 2.0,-,-,-,Java,-,-,-,
-commons-discovery-0.2.jar,Apache 1.1,-,-,-,Java,-,-,-,
-commons-httpclient-2.0.2.jar,Apache 2.0,-,-,-,Java,-,-,-,
-commons-io-2.5.jar,Apache 2.0,-,-,-,Java,-,-,-,
-groovy-all-2.4.5.jar,Apache 2.0,-,-,-,Java,-,-,-,
-hibernate-core-4.3.5.Final.jar,LGPL 2.1,-,-,-,Java,-,-,-,
-httpclient-4.3.4.jar,Apache 2.0,-,-,-,Java,-,-,-,
-iride2-fbi-intf-1.0.0.jar,Apache-2.0 - MIT (Rilasciata da CSI Piemonte su richiesta),-,-,-,Java,-,-,-,
-itext-2.1.7.jar,MPL 1.1,-,-,-,Java,-,-,-,
-jackson-core-2.1.5.jar,Apache 2.0,-,-,-,Java,-,-,-,
-jackson-databind-2.1.5.jar,Apache 2.0,-,-,-,Java,-,-,-,
-jackson-mapper-asl-1.9.13.jar,Apache 2.0,-,-,-,Java,-,-,-,
-jasperreports-6.2.1.jar,GNU GPL,-,-,-,Java,-,-,-,
-log4j-1.2.14.jar,Apache 2.0,-,-,-,Java,-,-,-,
-lucene-queryparser-4.5.1.jar,Apache 2.0,-,-,-,Java,-,-,-,
-poi-3.10.1.jar,Apache 2.0,-,-,-,Java,-,-,-,
-postgresql-9.4-1201.jdbc4.jar,BSD-2-Clause,-,-,-,Java,-,-,-,
-resteasy-jaxrs-3.7.0.Final.jar,ASL 2.0,-,-,-,Java,-,-,-,
-spring-core-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
-spring-expression-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
-spring-tx-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
-velocity-1.7-dep.jar,Apache 2.0,-,-,-,Java,-,-,-,
-velocity-1.7.jar,Apache 2.0,-,-,-,Java,-,-,-,
-weblogic-client-3.0.0.jar,,-,-,-,Java,-,-,-,
-xercesImpl-2.10.0.jar,Apache 2.0,-,-,-,Java,-,-,-,
+axis-1.4.jar,Apache 2.0,-,-,-,Java,-,-,-
+axis-jaxrpc-1.4.jar,Apache 2.0,-,-,-,Java,-,-,-
+batik-css-1.7.jar,Apache 2.0,-,-,-,Java,-,-,-
+bsh-2.0b4.jar,Apache 2.0,-,-,-,Java,-,-,-
+commons-beanutils-1.9.1.jar,Apache 2.0,-,-,-,Java,-,-,-
+commons-discovery-0.2.jar,Apache 1.1,-,-,-,Java,-,-,-
+commons-httpclient-2.0.2.jar,Apache 2.0,-,-,-,Java,-,-,-
+commons-io-2.5.jar,Apache 2.0,-,-,-,Java,-,-,-
+groovy-all-2.4.5.jar,Apache 2.0,-,-,-,Java,-,-,-
+hibernate-core-4.3.5.Final.jar,LGPL 2.1,-,-,-,Java,-,-,-
+httpclient-4.3.4.jar,Apache 2.0,-,-,-,Java,-,-,-
+iride2-fbi-intf-1.0.0.jar,Apache-2.0 - MIT (Rilasciata da CSI Piemonte su richiesta),-,-,-,Java,-,-,-
+itext-2.1.7.jar,MPL 1.1,-,-,-,Java,-,-,-
+jackson-core-2.1.5.jar,Apache 2.0,-,-,-,Java,-,-,-
+jackson-databind-2.1.5.jar,Apache 2.0,-,-,-,Java,-,-,-
+jackson-mapper-asl-1.9.13.jar,Apache 2.0,-,-,-,Java,-,-,-
+jasperreports-6.2.1.jar,GNU GPL,-,-,-,Java,-,-,-
+log4j-1.2.14.jar,Apache 2.0,-,-,-,Java,-,-,-
+lucene-queryparser-4.5.1.jar,Apache 2.0,-,-,-,Java,-,-,-
+poi-3.10.1.jar,Apache 2.0,-,-,-,Java,-,-,-
+postgresql-9.4-1201.jdbc4.jar,BSD-2-Clause,-,-,-,Java,-,-,-
+resteasy-jaxrs-3.7.0.Final.jar,ASL 2.0,-,-,-,Java,-,-,-
+spring-core-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-
+spring-expression-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-
+spring-tx-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-
+velocity-1.7-dep.jar,Apache 2.0,-,-,-,Java,-,-,-
+velocity-1.7.jar,Apache 2.0,-,-,-,Java,-,-,-
+weblogic-client-3.0.0.jar,,-,-,-,Java,-,-,-
+xercesImpl-2.10.0.jar,Apache 2.0,-,-,-,Java,-,-,-
