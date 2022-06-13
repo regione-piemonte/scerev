@@ -21,20 +21,14 @@ description:
       recarsi alla ASL. È possibile scegliere il nuovo medico all'interno di un
       determinato ambito territoriale in base al proprio domicilio.
 
-      ​
-
       La webApp permette all'operatore di back office di analizzare le richieste
       di scelta medico e pediatra relative a domande di assistenza temporanea e
       illimitata relative a particolari situazioni di domicilio in Piemonte, di
       soggiorno in Italia e di deroga per le quali è necessaria la valutazione
       dei dati e degli eventuali allegati inseriti dagli assistiti.
 
-      ​
-
       Gli assistiti che presentano domanda possono essere cittadini italiani o
       stranieri (comunitari o non comunitari).
-
-      ​
 
       Nei casi di richiesta del pediatra la domanda viene presentata dal
       genitore/tutore del minore.
@@ -47,12 +41,8 @@ description:
       respingere la domanda qualora i dati inseriti non siano compatibili o
       congruenti con la richiesta effettuata.
 
-      ​
-
       Il servizio propone l'impostazione di alcuni parametri che possono essere
       confermati o modificati dall'operatore di sportello.
-
-      ​
 
       Il servizio aggiorna in automatico tutti i dati dell'assistito e dei
       medici (precedente e attuale) presenti nell'Archivio Unico Regionale degli
