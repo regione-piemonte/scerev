@@ -9,8 +9,7 @@ description:
   it:
     features:
       - |-
-        Le API REST permettono al cittadino di scegliere o revocare il Medico di
-        Medicina Generale e il Pedi
+        Le API REST permettono al cittadino di scegliere o revocare il medico MMG o il pediatra.
       - |-
         La webApp permette all'operatore sanitario di analizzare le richieste di
         scelta medico e pediatra.
