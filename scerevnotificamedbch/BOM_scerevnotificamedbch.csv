@@ -1,9 +1,9 @@
 name@version *,license *,copyrights *,end-of-support,dependencies,language,repository,email,URL
-commons-io-2.5.jar,Apache 2.0,-,-,-,Java,-,-,-,
-httpclient-4.5.4.jar,Apache 2.0,-,-,-,Java,-,-,-,
-jackson-mapper-asl-1.9.13.jar,Apache 2.0,-,-,-,Java,-,-,-,
-log4j-1.2.14.jar,Apache 2.0,-,-,-,Java,-,-,-,
-postgresql-9.4-1201.jdbc4.jar,BSD-2-Clause,-,-,-,Java,-,-,-,
-spring-core-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
-spring-expression-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
-spring-tx-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-,
+commons-io-2.5.jar,Apache 2.0,-,-,-,Java,-,-,-
+httpclient-4.5.4.jar,Apache 2.0,-,-,-,Java,-,-,-
+jackson-mapper-asl-1.9.13.jar,Apache 2.0,-,-,-,Java,-,-,-
+log4j-1.2.14.jar,Apache 2.0,-,-,-,Java,-,-,-
+postgresql-9.4-1201.jdbc4.jar,BSD-2-Clause,-,-,-,Java,-,-,-
+spring-core-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-
+spring-expression-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-
+spring-tx-4.3.24.RELEASE.jar,Apache 2.0,-,-,-,Java,-,-,-
