@@ -67,5 +67,5 @@ Per il versionamento del software si utilizza la modalità Semantic Versioning (
 
 ## License
 
-SPDX-License-Identifier: inserire il codice SPDX delle licenza
-Veder il file LICENSE per i dettagli.
+SPDX-License-Identifier: EUPL-1.2
+Vedere il file LICENSE per i dettagli.
