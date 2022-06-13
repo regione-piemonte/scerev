@@ -1,4 +1,4 @@
-name@version *,license *,copyrights *,end-of-support,dependencies,language,repository,email,URL
+name@version *,license *,copyrights *,end-of-support,dependencies,language,repository,email,URL,others
 axis-1.4.jar,Apache 2.0,-,-,-,Java,-,-,-,
 axis-jaxrpc-1.4.jar,Apache 2.0,-,-,-,Java,-,-,-,
 batik-css-1.7.jar,Apache 2.0,-,-,-,Java,-,-,-,
