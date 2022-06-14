@@ -63,6 +63,8 @@ it:
     cie: false
     pagopa: false
     spid: false
+  riuso:
+    codiceIPA: r_piemon
 legal:
   license: EUPL-1.2
 localisation:
